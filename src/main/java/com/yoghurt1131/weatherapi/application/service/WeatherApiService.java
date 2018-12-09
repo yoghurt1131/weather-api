@@ -15,6 +15,8 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class WeatherApiService {
     private static final Logger logger = LoggerFactory.getLogger(WeatherApiService.class);
@@ -39,7 +41,7 @@ public class WeatherApiService {
             logger.info(String.format("Cache Hit.(%s)", cityName));
             return new CurrentWeather(city.getName(), city.extractWeather(), city.extractKelvin());
         }
-        logger.info("Cache: " + city);
+        logger.info(String.format("Not in cache.(%s)", cityName));
         String currentWeathrUrl = openWeatherApiUrl  + CURRENT_WEATHER;
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(currentWeathrUrl)
                 .queryParam("APPID", apiKey)
@@ -54,6 +56,7 @@ public class WeatherApiService {
             logger.info("Response Status Code: " + reponseStatus);
             logger.warn("Response Body:" + entity.getBody());
             redisTemplate.opsForValue().set(cityName, response);
+            redisTemplate.expire(cityName, 60, TimeUnit.MINUTES);
 
             CurrentWeather currentWeather = new CurrentWeather(response.getName(), response.extractWeather(), response.extractKelvin());
             return currentWeather;
