@@ -1,5 +1,6 @@
 package com.yoghurt1131.weatherapi.application.service;
 
+import com.yoghurt1131.weatherapi.application.Exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.slf4j.Logger;
@@ -7,7 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -28,11 +32,11 @@ public class WeatherApiService {
 
     private static String CURRENT_WEATHER = "/weather";
 
-    public CurrentWeather getCurrentWeather(String cityName) {
+    public CurrentWeather getCurrentWeather(String cityName) throws ApiCallException {
 
         City city = redisTemplate.opsForValue().get(cityName);
         if( city != null) {
-            logger.info("Cache Hit.{0}.".format(cityName));
+            logger.info(String.format("Cache Hit.(%s)", cityName));
             return new CurrentWeather(city.getName(), city.extractWeather(), city.extractKelvin());
         }
         logger.info("Cache: " + city);
@@ -41,11 +45,22 @@ public class WeatherApiService {
                 .queryParam("APPID", apiKey)
                 .queryParam("q", cityName);
 
-        City response = restTemplate.getForObject(builder.toUriString(), City.class);
-        logger.info("Api Respone:" + response.toString());
-        redisTemplate.opsForValue().set(cityName, response);
+        try {
+            logger.info("Start calling API:" + currentWeathrUrl);
+            ResponseEntity<City> entity = restTemplate.getForEntity(builder.toUriString(), City.class);
+            City response = entity.getBody();
+            logger.info("Finish calling API:" + currentWeathrUrl);
+            HttpStatus reponseStatus = entity.getStatusCode();
+            logger.info("Response Status Code: " + reponseStatus);
+            logger.warn("Response Body:" + entity.getBody());
+            redisTemplate.opsForValue().set(cityName, response);
 
-        CurrentWeather currentWeather  = new CurrentWeather(response.getName(), response.extractWeather(), response.extractKelvin());
-        return currentWeather;
+            CurrentWeather currentWeather = new CurrentWeather(response.getName(), response.extractWeather(), response.extractKelvin());
+            return currentWeather;
+        } catch (RestClientException exception) {
+            logger.error("Error has occurred when calling weather api.");
+            logger.info("Error Message:" + exception.getMessage());
+            throw new ApiCallException(exception.getMessage(), exception.getCause());
+        }
     }
 }
