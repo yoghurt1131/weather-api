@@ -1,0 +1,7 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+openweatherapi:
+  url: http://api.openweathermap.org/data/2.5
+  key:
