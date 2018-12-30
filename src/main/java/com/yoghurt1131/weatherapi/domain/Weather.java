@@ -1,7 +1,6 @@
 package com.yoghurt1131.weatherapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
