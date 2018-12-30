@@ -17,7 +17,7 @@ public class CurrentWeatherController {
     WeatherApiService weatherApiService;
 
     @GetMapping("/city")
-    public CurrentWeather city(@RequestParam String cityName) {
+    public CurrentWeather city(@RequestParam(required = true) String cityName) {
         try {
             CurrentWeather weather = weatherApiService.getCurrentWeather(cityName);
             return weather;
