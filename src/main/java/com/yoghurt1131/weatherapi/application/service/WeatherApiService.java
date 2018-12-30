@@ -5,8 +5,8 @@ import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,12 +39,16 @@ public class WeatherApiService {
 
     public CurrentWeather getCurrentWeather(String cityName) throws ApiCallException {
 
-        City city = redisTemplate.opsForValue().get(cityName);
-        if( city != null) {
-            logger.info(String.format("Cache Hit.(%s)", cityName));
-            return new CurrentWeather(city.getName(), city.extractWeather(), city.extractKelvin());
+        try {
+            City city = redisTemplate.opsForValue().get(cityName);
+            if (city != null) {
+                logger.info(String.format("Cache Hit.(%s)", cityName));
+                return new CurrentWeather(city.getName(), city.extractWeather(), city.extractKelvin());
+            }
+            logger.info(String.format("Not in cache.(%s)", cityName));
+        } catch (RedisConnectionFailureException exception) {
+            logger.warn("Failed to Connect Redis." + exception.getMessage());
         }
-        logger.info(String.format("Not in cache.(%s)", cityName));
         String currentWeathrUrl = openWeatherApiUrl  + CURRENT_WEATHER;
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(currentWeathrUrl)
                 .queryParam("APPID", apiKey)
@@ -57,9 +61,13 @@ public class WeatherApiService {
             logger.info("Finish calling API:" + currentWeathrUrl);
             HttpStatus reponseStatus = entity.getStatusCode();
             logger.info("Response Status Code: " + reponseStatus);
-            logger.warn("Response Body:" + entity.getBody());
+            logger.info("Response Body:" + entity.getBody());
+            try {
             redisTemplate.opsForValue().set(cityName, response);
             redisTemplate.expire(cityName, 60, TimeUnit.MINUTES);
+            } catch (RedisConnectionFailureException exception) {
+                logger.warn("Failed to Connect Redis." + exception.getMessage());
+            }
 
             CurrentWeather currentWeather = new CurrentWeather(response.getName(), response.extractWeather(), response.extractKelvin());
             return currentWeather;
