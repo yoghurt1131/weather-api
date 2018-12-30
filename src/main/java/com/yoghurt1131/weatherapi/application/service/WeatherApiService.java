@@ -21,18 +21,21 @@ import java.util.concurrent.TimeUnit;
 public class WeatherApiService {
     private static final Logger logger = LoggerFactory.getLogger(WeatherApiService.class);
 
-    @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-    @Autowired
-    RedisTemplate <String, City> redisTemplate;
+    private RedisTemplate <String, City> redisTemplate;
 
     @Value("${openweatherapi.url}")
-    String openWeatherApiUrl;
+    protected String openWeatherApiUrl;
     @Value("${openweatherapi.key}")
-    String apiKey;
+    protected String apiKey;
 
     private static String CURRENT_WEATHER = "/weather";
+
+    public WeatherApiService(RestTemplate restTemplate, RedisTemplate<String, City> redisTemplate) {
+        this.restTemplate = restTemplate;
+        this.redisTemplate = redisTemplate;
+    }
 
     public CurrentWeather getCurrentWeather(String cityName) throws ApiCallException {
 
