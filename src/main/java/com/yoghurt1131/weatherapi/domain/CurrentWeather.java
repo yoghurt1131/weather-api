@@ -16,12 +16,27 @@ public class CurrentWeather {
     @JsonIgnore
     private double kelvin;
     private double temperature;
+    private String weatherIconUrl;
 
     public CurrentWeather(String cityName, String status, double kelvin) {
         this.cityName = cityName;
         this.status = status;
         this.kelvin = kelvin;
+        this.temperature =  convertTemparature(kelvin);
+    }
+
+    public static CurrentWeather getInstanceFromCity(City city) {
+        CurrentWeather instance = new CurrentWeather();
+        instance.cityName = city.getName();
+        instance.status = city.extractWeather();
+        instance.kelvin = city.extractKelvin();
+        instance.temperature =  convertTemparature(instance.kelvin);
+        instance.weatherIconUrl = city.getWeathers().get(0).getWeatherIconUrl();
+        return instance;
+    }
+
+    private static double convertTemparature(double kelvin) {
         BigDecimal decimal = new BigDecimal(kelvin + ABSOLUTE_TEMPERATURE);
-        this.temperature =  decimal.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return decimal.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 }

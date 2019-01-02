@@ -43,7 +43,7 @@ public class WeatherApiService {
             City city = redisTemplate.opsForValue().get(cityName);
             if (city != null) {
                 logger.info(String.format("Cache Hit.(%s)", cityName));
-                return new CurrentWeather(city.getName(), city.extractWeather(), city.extractKelvin());
+                return CurrentWeather.getInstanceFromCity(city);
             }
             logger.info(String.format("Not in cache.(%s)", cityName));
         } catch (RedisConnectionFailureException exception) {
@@ -69,7 +69,7 @@ public class WeatherApiService {
                 logger.warn("Failed to Connect Redis." + exception.getMessage());
             }
 
-            CurrentWeather currentWeather = new CurrentWeather(response.getName(), response.extractWeather(), response.extractKelvin());
+            CurrentWeather currentWeather = CurrentWeather.getInstanceFromCity(response);
             return currentWeather;
         } catch (RestClientException exception) {
             logger.error("Error has occurred when calling weather api.");
