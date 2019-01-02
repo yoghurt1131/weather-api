@@ -64,7 +64,7 @@ public class WeatherApiService {
             logger.info("Response Body:" + entity.getBody());
             try {
             redisTemplate.opsForValue().set(cityName, response);
-            redisTemplate.expire(cityName, 60, TimeUnit.MINUTES);
+            redisTemplate.expire(cityName, 30, TimeUnit.MINUTES);
             } catch (RedisConnectionFailureException exception) {
                 logger.warn("Failed to Connect Redis." + exception.getMessage());
             }
