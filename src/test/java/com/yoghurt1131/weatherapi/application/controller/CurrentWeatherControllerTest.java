@@ -1,6 +1,7 @@
 package com.yoghurt1131.weatherapi.application.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yoghurt1131.weatherapi.application.Exception.ApiCallException;
 import com.yoghurt1131.weatherapi.application.service.WeatherApiService;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.junit.Before;
@@ -13,10 +14,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.io.IOException;
+
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,7 +41,7 @@ public class CurrentWeatherControllerTest {
     }
 
     @Test
-    public void testCurrentWeatherControllerWithCityName() throws Exception {
+    public void testCityWithCityName() throws Exception {
         // setup
         CurrentWeather expected = new CurrentWeather("Tokyo", "sunny", 283.15);
         expected.setWeatherIconUrl("test://weathericonurl");
@@ -54,6 +58,21 @@ public class CurrentWeatherControllerTest {
         assertThat(actual.getStatus(), is("sunny"));
         assertThat(actual.getTemperature(), is(10.0));
         assertThat(actual.getWeatherIconUrl(), is("test://weathericonurl"));
+
+        verify(weatherApiService, times(1)).getCurrentWeather("Tokyo");
+    }
+
+    @Test
+    public void testCityWhenApiExceptionHasThrowed() throws Exception {
+        // setup
+        doThrow(new ApiCallException("Dummy Exception.", new IOException("Dummy IOException"))).when(weatherApiService).getCurrentWeather("Tokyo");
+
+        // when
+        MvcResult result= mockMvc.perform(get("/current/city")
+                .param("cityName", "Tokyo")
+        ).andExpect(status().isOk()).andReturn();
+
+        assertThat(result.getResponse().getContentAsString(), is(""));
 
     }
 }
