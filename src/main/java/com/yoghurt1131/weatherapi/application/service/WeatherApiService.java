@@ -1,6 +1,6 @@
 package com.yoghurt1131.weatherapi.application.service;
 
-import com.yoghurt1131.weatherapi.application.Exception.ApiCallException;
+import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.slf4j.Logger;

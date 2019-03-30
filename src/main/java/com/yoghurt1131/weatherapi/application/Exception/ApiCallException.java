@@ -1,4 +1,4 @@
-package com.yoghurt1131.weatherapi.application.Exception;
+package com.yoghurt1131.weatherapi.application.exception;
 
 public class ApiCallException extends Exception {
 
