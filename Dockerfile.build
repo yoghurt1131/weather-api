@@ -1,0 +1,9 @@
+FROM maven:3.6.0-jdk-8
+COPY ./ /app
+RUN groupadd -r weather && useradd -r -g weather weather;\
+    chown -R weather:weather /app; \
+    mkdir /home/weather; \
+    chown -R weather:weather /home/weather;
+WORKDIR /app
+USER weather
+RUN mvn test
