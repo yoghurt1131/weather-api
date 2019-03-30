@@ -1,7 +1,7 @@
 package com.yoghurt1131.weatherapi.application.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yoghurt1131.weatherapi.application.Exception.ApiCallException;
+import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.application.service.WeatherApiService;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.junit.Before;
