@@ -12,6 +12,7 @@ script:
 
 after_script:
     - cp target/site/jacoco/jacoco.xml src/main/java/jacoco.xml
+    - cd src/main/java
     - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage  target/site/jacoco/jacoco.xml --input-type jacoco
     - ./cc-test-reporter upload-coverage
 
