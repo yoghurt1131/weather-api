@@ -2,14 +2,13 @@ package com.yoghurt1131.weatherapi.application.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
-import com.yoghurt1131.weatherapi.application.service.WeatherApiService;
+import com.yoghurt1131.weatherapi.application.service.WeatherApiServiceImpl;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -18,7 +17,6 @@ import java.io.IOException;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
-import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CurrentWeatherControllerTest {
 
     @Mock
-    WeatherApiService weatherApiService;
+    WeatherApiServiceImpl weatherApiService;
 
     @InjectMocks
     CurrentWeatherController target;

@@ -28,7 +28,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
-public class WeatherApiServiceTest {
+public class WeatherApiServiceImplTest {
 
     @Mock
     ValueOperations<String, City> operations;
@@ -40,14 +40,14 @@ public class WeatherApiServiceTest {
     private RedisTemplate redisTemplate;
 
     @InjectMocks
-    WeatherApiService target = getTarget();
+    WeatherApiServiceImpl target = getTarget();
 
     private City cityResponse;
     private City cityCache;
 
-    protected WeatherApiService getTarget() {
+    protected WeatherApiServiceImpl getTarget() {
         MockitoAnnotations.initMocks(this);
-        WeatherApiService target = new WeatherApiService(restTemplate, redisTemplate);
+        WeatherApiServiceImpl target = new WeatherApiServiceImpl(restTemplate, redisTemplate);
         target.openWeatherApiUrl = "http://weatherapitest";
         target.apiKey = "key";
         return target;
