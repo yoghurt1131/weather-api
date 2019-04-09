@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CurrentWeatherController {
 
+    private final WeatherApiService weatherApiService;
+
     @Autowired
-    WeatherApiService weatherApiService;
+    public CurrentWeatherController(WeatherApiService weatherApiService) {
+        this.weatherApiService = weatherApiService;
+    }
 
     @GetMapping("/city")
     public CurrentWeather city(@RequestParam(required = true) String cityName) {
