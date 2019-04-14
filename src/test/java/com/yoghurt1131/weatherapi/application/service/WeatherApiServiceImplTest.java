@@ -4,7 +4,7 @@ import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import com.yoghurt1131.weatherapi.domain.Temperature;
-import com.yoghurt1131.weatherapi.domain.Weather;
+import com.yoghurt1131.weatherapi.domain.input.valueobject.Weather;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Answers;

@@ -3,6 +3,7 @@ package com.yoghurt1131.weatherapi.application.service;
 import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
+import com.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,6 +33,8 @@ public class WeatherApiServiceImpl implements WeatherApiService {
 
     private static String CURRENT_WEATHER = "/weather";
 
+    private static String FORECAST_PATH = "/forecast";
+
     public WeatherApiServiceImpl(RestTemplate restTemplate, RedisTemplate<String, City> redisTemplate) {
         this.restTemplate = restTemplate;
         this.redisTemplate = redisTemplate;
@@ -49,14 +52,12 @@ public class WeatherApiServiceImpl implements WeatherApiService {
         } catch (RedisConnectionFailureException exception) {
             logger.warn("Failed to Connect Redis." + exception.getMessage());
         }
-        String currentWeathrUrl = openWeatherApiUrl  + CURRENT_WEATHER;
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(currentWeathrUrl)
-                .queryParam("APPID", apiKey)
-                .queryParam("q", cityName);
 
         try {
+            String currentWeathrUrl = openWeatherApiUrl  + CURRENT_WEATHER;
             logger.info("Start calling API:" + currentWeathrUrl);
-            ResponseEntity<City> entity = restTemplate.getForEntity(builder.toUriString(), City.class);
+            String requestUrl = buildRequestUrlWithCityName(currentWeathrUrl, cityName);
+            ResponseEntity<City> entity = restTemplate.getForEntity(requestUrl, City.class);
             City response = entity.getBody();
             logger.info("Finish calling API:" + currentWeathrUrl);
             HttpStatus reponseStatus = entity.getStatusCode();
@@ -77,4 +78,33 @@ public class WeatherApiServiceImpl implements WeatherApiService {
             throw new ApiCallException(exception.getMessage(), exception.getCause());
         }
     }
+
+    @Override
+    public void getTodaysWeather(String cityName) throws ApiCallException {
+        // Todo Use Cache
+        logger.info(String.format("%s's forecast is not in cache.", cityName));
+        try {
+            String forecastUrl = openWeatherApiUrl  + FORECAST_PATH;
+            logger.info("Start calling API:" + forecastUrl);
+            String requestUrl = buildRequestUrlWithCityName(forecastUrl, cityName);
+            ResponseEntity<FiveDaysForecast> entity = restTemplate.getForEntity(requestUrl, FiveDaysForecast.class);
+            FiveDaysForecast response = entity.getBody();
+            logger.info("Finish calling API:" + forecastUrl);
+            HttpStatus reponseStatus = entity.getStatusCode();
+            logger.info("Response Status Code: " + reponseStatus);
+            logger.info("Response Body:" + entity.getBody());
+        } catch (RestClientException exception) {
+            logger.error("Error has occurred when calling weather api.");
+            logger.info("Error Message:" + exception.getMessage());
+            throw new ApiCallException(exception.getMessage(), exception.getCause());
+        }
+    }
+
+    private String buildRequestUrlWithCityName(String url, String cityName) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
+                .queryParam("q", cityName)
+                .queryParam("APPID", apiKey);
+        return builder.toUriString();
+    }
+
 }
