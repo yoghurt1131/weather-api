@@ -1,7 +1,7 @@
 package com.yoghurt1131.weatherapi.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yoghurt1131.weatherapi.domain.valueobject.Weather;
+import com.yoghurt1131.weatherapi.domain.input.valueobject.Weather;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

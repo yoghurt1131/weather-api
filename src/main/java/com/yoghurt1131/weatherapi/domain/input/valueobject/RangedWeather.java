@@ -1,7 +1,9 @@
-package com.yoghurt1131.weatherapi.domain.valueobject;
+package com.yoghurt1131.weatherapi.domain.input.valueobject;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class RangedWeather {
@@ -17,7 +19,7 @@ public class RangedWeather {
     private RangedWeatherProperty property;
 
     @JsonProperty("weather")
-    private Weather weather;
+    private List<Weather> weathers;
 
     @JsonProperty("clouds")
     private Clouds clouds;
