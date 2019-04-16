@@ -2,6 +2,7 @@ package com.yoghurt1131.weatherapi.application.controller;
 
 import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.application.service.WeatherApiService;
+import com.yoghurt1131.weatherapi.domain.output.valueobject.Forecast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,8 @@ public class ForecastController {
 
 
     @GetMapping("/daily")
-    public String dailyForecast() throws ApiCallException {
-        weatherApiService.getTodaysWeather("Tokyo");
+    public Forecast dailyForecast() throws ApiCallException {
+        return weatherApiService.getTodaysWeather("Tokyo");
 
-        return "OK";
     }
 }

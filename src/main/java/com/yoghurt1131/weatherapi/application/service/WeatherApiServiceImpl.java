@@ -4,6 +4,7 @@ import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.City;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
 import com.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast;
+import com.yoghurt1131.weatherapi.domain.output.valueobject.Forecast;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,9 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class WeatherApiServiceImpl implements WeatherApiService {
     private static final Logger logger = LoggerFactory.getLogger(WeatherApiServiceImpl.class);
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-    private RedisTemplate <String, City> redisTemplate;
+    private final RedisTemplate <String, City> redisTemplate;
+
+    private final WeatherInterpreter interpreter;
 
     @Value("${openweatherapi.url}")
     protected String openWeatherApiUrl;
@@ -35,9 +38,10 @@ public class WeatherApiServiceImpl implements WeatherApiService {
 
     private static String FORECAST_PATH = "/forecast";
 
-    public WeatherApiServiceImpl(RestTemplate restTemplate, RedisTemplate<String, City> redisTemplate) {
+    public WeatherApiServiceImpl(RestTemplate restTemplate, RedisTemplate<String, City> redisTemplate, WeatherInterpreter interpreter) {
         this.restTemplate = restTemplate;
         this.redisTemplate = redisTemplate;
+        this.interpreter =interpreter;
     }
 
     public CurrentWeather getCurrentWeather(String cityName) throws ApiCallException {
@@ -80,7 +84,9 @@ public class WeatherApiServiceImpl implements WeatherApiService {
     }
 
     @Override
-    public void getTodaysWeather(String cityName) throws ApiCallException {
+    public Forecast getTodaysWeather(String cityName) throws ApiCallException {
+
+        FiveDaysForecast apiResponse = null;
         // Todo Use Cache
         logger.info(String.format("%s's forecast is not in cache.", cityName));
         try {
@@ -88,7 +94,7 @@ public class WeatherApiServiceImpl implements WeatherApiService {
             logger.info("Start calling API:" + forecastUrl);
             String requestUrl = buildRequestUrlWithCityName(forecastUrl, cityName);
             ResponseEntity<FiveDaysForecast> entity = restTemplate.getForEntity(requestUrl, FiveDaysForecast.class);
-            FiveDaysForecast response = entity.getBody();
+            apiResponse = entity.getBody();
             logger.info("Finish calling API:" + forecastUrl);
             HttpStatus reponseStatus = entity.getStatusCode();
             logger.info("Response Status Code: " + reponseStatus);
@@ -98,6 +104,11 @@ public class WeatherApiServiceImpl implements WeatherApiService {
             logger.info("Error Message:" + exception.getMessage());
             throw new ApiCallException(exception.getMessage(), exception.getCause());
         }
+
+        Forecast forecast = interpreter.interpret(apiResponse.getForecasts());
+        forecast.setCityName(cityName);
+
+        return forecast;
     }
 
     private String buildRequestUrlWithCityName(String url, String cityName) {

@@ -7,22 +7,22 @@ import lombok.Data;
 public class RangedWeatherProperty {
 
     @JsonProperty("temp")
-    private float temperature;
+    private double temperature;
 
     @JsonProperty("temp_min")
-    private float tempratureMin;
+    private double tempratureMin;
 
     @JsonProperty("temp_max")
-    private float tempratureMax;
+    private double tempratureMax;
 
     @JsonProperty("pressure")
-    private float pressure;
+    private double pressure;
 
     @JsonProperty("sea_level")
-    private float pressureOfSeaLevel;
+    private double pressureOfSeaLevel;
 
     @JsonProperty("gnd_level")
-    private float pressureOfGroundLevel;
+    private double pressureOfGroundLevel;
 
     @JsonProperty("humidity")
     private int humidity;

@@ -3,10 +3,10 @@ package com.yoghurt1131.weatherapi.domain.output.valueobject;
 import lombok.Data;
 
 /**
- * 一日の天気予報
+ * 天気予報
  */
 @Data
-public class DailyForecast {
+public class Forecast {
 
     private String cityName;
 
@@ -17,8 +17,8 @@ public class DailyForecast {
     private String weatherIconUrl;
 
     // 最高気温
-    private long temperatureMax;
+    private double maxTemperature;
 
     // 最低気温
-    private long temperatureMin;
+    private double minTemperature;
 }

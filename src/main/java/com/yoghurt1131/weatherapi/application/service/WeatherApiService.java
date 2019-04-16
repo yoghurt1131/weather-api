@@ -2,6 +2,7 @@ package com.yoghurt1131.weatherapi.application.service;
 
 import com.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import com.yoghurt1131.weatherapi.domain.CurrentWeather;
+import com.yoghurt1131.weatherapi.domain.output.valueobject.Forecast;
 
 public interface WeatherApiService {
 
@@ -12,5 +13,5 @@ public interface WeatherApiService {
      * @param cityName
      * @throws ApiCallException
      */
-    void getTodaysWeather(String cityName) throws ApiCallException;
+    Forecast getTodaysWeather(String cityName) throws ApiCallException;
 }
