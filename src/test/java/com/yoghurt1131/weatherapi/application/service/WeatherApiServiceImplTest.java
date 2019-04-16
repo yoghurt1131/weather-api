@@ -39,6 +39,9 @@ public class WeatherApiServiceImplTest {
     @Mock
     private RedisTemplate redisTemplate;
 
+    @Mock
+    private WeatherInterpreter interpreter;
+
     @InjectMocks
     WeatherApiServiceImpl target = getTarget();
 
@@ -47,7 +50,7 @@ public class WeatherApiServiceImplTest {
 
     protected WeatherApiServiceImpl getTarget() {
         MockitoAnnotations.initMocks(this);
-        WeatherApiServiceImpl target = new WeatherApiServiceImpl(restTemplate, redisTemplate);
+        WeatherApiServiceImpl target = new WeatherApiServiceImpl(restTemplate, redisTemplate, interpreter);
         target.openWeatherApiUrl = "http://weatherapitest";
         target.apiKey = "key";
         return target;
