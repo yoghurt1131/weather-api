@@ -57,7 +57,7 @@ public class TodayForecastInterpreter implements WeatherInterpreter {
     }
 
     private LocalDateTime toDateTime(String dateTimeText) {
-        String pattern = "YYYY-MM-dd HH:mm:ss";
+        String pattern = "yyyy-MM-dd HH:mm:ss";
         //"2019-04-14 15:00:00"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return LocalDateTime.parse(dateTimeText, formatter);

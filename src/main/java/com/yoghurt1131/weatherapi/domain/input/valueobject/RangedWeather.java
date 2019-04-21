@@ -12,7 +12,7 @@ public class RangedWeather {
     @JsonProperty("dt")
     private long time;
 
-    @JsonProperty("dt_text")
+    @JsonProperty("dt_txt")
     private String utcDatetime;
 
     @JsonProperty("main")
