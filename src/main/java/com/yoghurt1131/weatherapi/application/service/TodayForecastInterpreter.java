@@ -23,12 +23,8 @@ public class TodayForecastInterpreter implements WeatherInterpreter {
     public Forecast interpret(List<RangedWeather> weatherData) {
         Forecast forecast = new Forecast();
 
-        LocalDateTime endOfToday = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59);
-        // 今日のデータだけを抜き出し
-        Stream<RangedWeather> todaysWeather = weatherData.stream().filter(w -> toDateTime(w.getUtcDatetime()).isBefore(endOfToday));
-
         // 多数決で天気を決める
-        Map<String, Long> statusCountMap = todaysWeather.flatMap(w -> w.getWeathers().stream())
+        Map<String, Long> statusCountMap = getTodaysWeather(weatherData).flatMap(w -> w.getWeathers().stream())
                 .collect(groupingBy(Weather::getStatus, counting()));
         Optional<String> status = statusCountMap.entrySet().stream()
                 .sorted((s, t) -> (int)(s.getValue() - t.getValue()))
@@ -36,19 +32,19 @@ public class TodayForecastInterpreter implements WeatherInterpreter {
         forecast.setStatus(status.get());
 
         // アイコンはステータスから決定
-        String icon = todaysWeather.flatMap(w -> w.getWeathers().stream())
+        String icon = getTodaysWeather(weatherData).flatMap(w -> w.getWeathers().stream())
                 .filter(w -> w.getStatus().equals(status.get()))
                 .map(Weather::getIcon).findFirst().get();
 
         forecast.setStatus(icon);
 
         // 最高気温
-        OptionalDouble maxTemperature = todaysWeather.map(RangedWeather::getProperty)
+        OptionalDouble maxTemperature = getTodaysWeather(weatherData).map(RangedWeather::getProperty)
                 .mapToDouble(RangedWeatherProperty::getTempratureMax).max();
         forecast.setMaxTemperature(maxTemperature.orElse(0.0));
 
         // 最低気温
-        OptionalDouble minTemperature = todaysWeather.map(RangedWeather::getProperty)
+        OptionalDouble minTemperature = getTodaysWeather(weatherData).map(RangedWeather::getProperty)
                 .mapToDouble(RangedWeatherProperty::getTempratureMin).min();
         forecast.setMinTemperature(minTemperature.orElse(0.0));
 
@@ -61,5 +57,15 @@ public class TodayForecastInterpreter implements WeatherInterpreter {
         //"2019-04-14 15:00:00"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return LocalDateTime.parse(dateTimeText, formatter);
+    }
+
+    /**
+     * 今日の天気だけ取得
+     * @param weatherData
+     * @return
+     */
+    private Stream<RangedWeather> getTodaysWeather(List<RangedWeather> weatherData) {
+        LocalDateTime endOfToday = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59);
+        return weatherData.stream().filter(w -> toDateTime(w.getUtcDatetime()).isBefore(endOfToday));
     }
 }

@@ -1,0 +1,1162 @@
+[
+  {
+    "dt": 1563818400,
+    "dt_txt": "2019-07-22 18:00:00",
+    "main": {
+      "temp": 296.17,
+      "temp_min": 296.17,
+      "temp_max": 297.744,
+      "pressure": 1008.4,
+      "sea_level": 1008.4,
+      "gnd_level": 0.0,
+      "humidity": 82
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 1.66,
+      "deg": 350.424
+    }
+  },
+  {
+    "dt": 1563829200,
+    "dt_txt": "2019-07-22 21:00:00",
+    "main": {
+      "temp": 296.9,
+      "temp_min": 296.9,
+      "temp_max": 298.085,
+      "pressure": 1008.47,
+      "sea_level": 1008.47,
+      "gnd_level": 0.0,
+      "humidity": 79
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 1.1,
+      "deg": 341.153
+    }
+  },
+  {
+    "dt": 1563840000,
+    "dt_txt": "2019-07-23 00:00:00",
+    "main": {
+      "temp": 299.61,
+      "temp_min": 299.61,
+      "temp_max": 300.4,
+      "pressure": 1007.89,
+      "sea_level": 1007.89,
+      "gnd_level": 0.0,
+      "humidity": 67
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 96
+    },
+    "wind": {
+      "speed": 2.12,
+      "deg": 50.507
+    }
+  },
+  {
+    "dt": 1563850800,
+    "dt_txt": "2019-07-23 03:00:00",
+    "main": {
+      "temp": 304.41,
+      "temp_min": 304.41,
+      "temp_max": 304.8,
+      "pressure": 1006.2,
+      "sea_level": 1006.2,
+      "gnd_level": 0.0,
+      "humidity": 48
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 45
+    },
+    "wind": {
+      "speed": 1.95,
+      "deg": 85.448
+    }
+  },
+  {
+    "dt": 1563861600,
+    "dt_txt": "2019-07-23 06:00:00",
+    "main": {
+      "temp": 306.269,
+      "temp_min": 306.269,
+      "temp_max": 306.269,
+      "pressure": 1005.27,
+      "sea_level": 1005.27,
+      "gnd_level": 0.0,
+      "humidity": 43
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 45
+    },
+    "wind": {
+      "speed": 2.97,
+      "deg": 167.773
+    }
+  },
+  {
+    "dt": 1563872400,
+    "dt_txt": "2019-07-23 09:00:00",
+    "main": {
+      "temp": 304.944,
+      "temp_min": 304.944,
+      "temp_max": 304.944,
+      "pressure": 1005.15,
+      "sea_level": 1005.15,
+      "gnd_level": 0.0,
+      "humidity": 48
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 2.73,
+      "deg": 129.322
+    }
+  },
+  {
+    "dt": 1563883200,
+    "dt_txt": "2019-07-23 12:00:00",
+    "main": {
+      "temp": 302.444,
+      "temp_min": 302.444,
+      "temp_max": 302.444,
+      "pressure": 1006.75,
+      "sea_level": 1006.75,
+      "gnd_level": 0.0,
+      "humidity": 60
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 2.12,
+      "deg": 78.982
+    }
+  },
+  {
+    "dt": 1563894000,
+    "dt_txt": "2019-07-23 15:00:00",
+    "main": {
+      "temp": 299.961,
+      "temp_min": 299.961,
+      "temp_max": 299.961,
+      "pressure": 1006.24,
+      "sea_level": 1006.24,
+      "gnd_level": 0.0,
+      "humidity": 72
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 501,
+        "main": "Rain",
+        "description": "moderate rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 3.05,
+      "deg": 1.597
+    }
+  },
+  {
+    "dt": 1563904800,
+    "dt_txt": "2019-07-23 18:00:00",
+    "main": {
+      "temp": 299.082,
+      "temp_min": 299.082,
+      "temp_max": 299.082,
+      "pressure": 1005.81,
+      "sea_level": 1005.81,
+      "gnd_level": 0.0,
+      "humidity": 75
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 501,
+        "main": "Rain",
+        "description": "moderate rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 3.57,
+      "deg": 353.313
+    }
+  },
+  {
+    "dt": 1563915600,
+    "dt_txt": "2019-07-23 21:00:00",
+    "main": {
+      "temp": 299.322,
+      "temp_min": 299.322,
+      "temp_max": 299.322,
+      "pressure": 1006.8,
+      "sea_level": 1006.8,
+      "gnd_level": 0.0,
+      "humidity": 73
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 29
+    },
+    "wind": {
+      "speed": 2.92,
+      "deg": 4.343
+    }
+  },
+  {
+    "dt": 1563926400,
+    "dt_txt": "2019-07-24 00:00:00",
+    "main": {
+      "temp": 302.9,
+      "temp_min": 302.9,
+      "temp_max": 302.9,
+      "pressure": 1006.95,
+      "sea_level": 1006.95,
+      "gnd_level": 0.0,
+      "humidity": 57
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/02d.png",
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ],
+    "clouds": {
+      "all": 17
+    },
+    "wind": {
+      "speed": 2.24,
+      "deg": 29.593
+    }
+  },
+  {
+    "dt": 1563937200,
+    "dt_txt": "2019-07-24 03:00:00",
+    "main": {
+      "temp": 307.1,
+      "temp_min": 307.1,
+      "temp_max": 307.1,
+      "pressure": 1006.44,
+      "sea_level": 1006.44,
+      "gnd_level": 0.0,
+      "humidity": 42
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 32
+    },
+    "wind": {
+      "speed": 1.46,
+      "deg": 94.939
+    }
+  },
+  {
+    "dt": 1563948000,
+    "dt_txt": "2019-07-24 06:00:00",
+    "main": {
+      "temp": 308.669,
+      "temp_min": 308.669,
+      "temp_max": 308.669,
+      "pressure": 1005.66,
+      "sea_level": 1005.66,
+      "gnd_level": 0.0,
+      "humidity": 36
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/02d.png",
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ],
+    "clouds": {
+      "all": 18
+    },
+    "wind": {
+      "speed": 2.56,
+      "deg": 139.022
+    }
+  },
+  {
+    "dt": 1563958800,
+    "dt_txt": "2019-07-24 09:00:00",
+    "main": {
+      "temp": 307.188,
+      "temp_min": 307.188,
+      "temp_max": 307.188,
+      "pressure": 1006.99,
+      "sea_level": 1006.99,
+      "gnd_level": 0.0,
+      "humidity": 42
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 87
+    },
+    "wind": {
+      "speed": 4.14,
+      "deg": 169.792
+    }
+  },
+  {
+    "dt": 1563969600,
+    "dt_txt": "2019-07-24 12:00:00",
+    "main": {
+      "temp": 304.16,
+      "temp_min": 304.16,
+      "temp_max": 304.16,
+      "pressure": 1008.87,
+      "sea_level": 1008.87,
+      "gnd_level": 0.0,
+      "humidity": 54
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04n.png",
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04n"
+      }
+    ],
+    "clouds": {
+      "all": 72
+    },
+    "wind": {
+      "speed": 3.99,
+      "deg": 168.034
+    }
+  },
+  {
+    "dt": 1563980400,
+    "dt_txt": "2019-07-24 15:00:00",
+    "main": {
+      "temp": 303.095,
+      "temp_min": 303.095,
+      "temp_max": 303.095,
+      "pressure": 1009.01,
+      "sea_level": 1009.01,
+      "gnd_level": 0.0,
+      "humidity": 59
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 0
+    },
+    "wind": {
+      "speed": 0.87,
+      "deg": 62.814
+    }
+  },
+  {
+    "dt": 1563991200,
+    "dt_txt": "2019-07-24 18:00:00",
+    "main": {
+      "temp": 301.344,
+      "temp_min": 301.344,
+      "temp_max": 301.344,
+      "pressure": 1009.23,
+      "sea_level": 1009.23,
+      "gnd_level": 0.0,
+      "humidity": 66
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 0
+    },
+    "wind": {
+      "speed": 3.22,
+      "deg": 356.675
+    }
+  },
+  {
+    "dt": 1564002000,
+    "dt_txt": "2019-07-24 21:00:00",
+    "main": {
+      "temp": 300.755,
+      "temp_min": 300.755,
+      "temp_max": 300.755,
+      "pressure": 1009.91,
+      "sea_level": 1009.91,
+      "gnd_level": 0.0,
+      "humidity": 69
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01d.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "clouds": {
+      "all": 0
+    },
+    "wind": {
+      "speed": 2.53,
+      "deg": 3.807
+    }
+  },
+  {
+    "dt": 1564012800,
+    "dt_txt": "2019-07-25 00:00:00",
+    "main": {
+      "temp": 304.395,
+      "temp_min": 304.395,
+      "temp_max": 304.395,
+      "pressure": 1010.37,
+      "sea_level": 1010.37,
+      "gnd_level": 0.0,
+      "humidity": 53
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01d.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "clouds": {
+      "all": 8
+    },
+    "wind": {
+      "speed": 1.6,
+      "deg": 4.377
+    }
+  },
+  {
+    "dt": 1564023600,
+    "dt_txt": "2019-07-25 03:00:00",
+    "main": {
+      "temp": 308.446,
+      "temp_min": 308.446,
+      "temp_max": 308.446,
+      "pressure": 1009.61,
+      "sea_level": 1009.61,
+      "gnd_level": 0.0,
+      "humidity": 39
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 33
+    },
+    "wind": {
+      "speed": 1.56,
+      "deg": 118.239
+    }
+  },
+  {
+    "dt": 1564034400,
+    "dt_txt": "2019-07-25 06:00:00",
+    "main": {
+      "temp": 310.0,
+      "temp_min": 310.0,
+      "temp_max": 310.0,
+      "pressure": 1008.64,
+      "sea_level": 1008.64,
+      "gnd_level": 0.0,
+      "humidity": 34
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/02d.png",
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ],
+    "clouds": {
+      "all": 17
+    },
+    "wind": {
+      "speed": 5.39,
+      "deg": 154.291
+    }
+  },
+  {
+    "dt": 1564045200,
+    "dt_txt": "2019-07-25 09:00:00",
+    "main": {
+      "temp": 306.0,
+      "temp_min": 306.0,
+      "temp_max": 306.0,
+      "pressure": 1009.29,
+      "sea_level": 1009.29,
+      "gnd_level": 0.0,
+      "humidity": 46
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01d.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01d"
+      }
+    ],
+    "clouds": {
+      "all": 9
+    },
+    "wind": {
+      "speed": 7.04,
+      "deg": 173.454
+    }
+  },
+  {
+    "dt": 1564056000,
+    "dt_txt": "2019-07-25 12:00:00",
+    "main": {
+      "temp": 303.2,
+      "temp_min": 303.2,
+      "temp_max": 303.2,
+      "pressure": 1011.15,
+      "sea_level": 1011.15,
+      "gnd_level": 0.0,
+      "humidity": 60
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01n.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "clouds": {
+      "all": 4
+    },
+    "wind": {
+      "speed": 5.75,
+      "deg": 158.787
+    }
+  },
+  {
+    "dt": 1564066800,
+    "dt_txt": "2019-07-25 15:00:00",
+    "main": {
+      "temp": 302.938,
+      "temp_min": 302.938,
+      "temp_max": 302.938,
+      "pressure": 1010.57,
+      "sea_level": 1010.57,
+      "gnd_level": 0.0,
+      "humidity": 56
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01n.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "clouds": {
+      "all": 0
+    },
+    "wind": {
+      "speed": 3.77,
+      "deg": 168.005
+    }
+  },
+  {
+    "dt": 1564077600,
+    "dt_txt": "2019-07-25 18:00:00",
+    "main": {
+      "temp": 301.921,
+      "temp_min": 301.921,
+      "temp_max": 301.921,
+      "pressure": 1010.48,
+      "sea_level": 1010.48,
+      "gnd_level": 0.0,
+      "humidity": 62
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01n.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "clouds": {
+      "all": 0
+    },
+    "wind": {
+      "speed": 2.0,
+      "deg": 189.373
+    }
+  },
+  {
+    "dt": 1564088400,
+    "dt_txt": "2019-07-25 21:00:00",
+    "main": {
+      "temp": 301.664,
+      "temp_min": 301.664,
+      "temp_max": 301.664,
+      "pressure": 1010.59,
+      "sea_level": 1010.59,
+      "gnd_level": 0.0,
+      "humidity": 61
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 63
+    },
+    "wind": {
+      "speed": 2.22,
+      "deg": 211.962
+    }
+  },
+  {
+    "dt": 1564099200,
+    "dt_txt": "2019-07-26 00:00:00",
+    "main": {
+      "temp": 305.376,
+      "temp_min": 305.376,
+      "temp_max": 305.376,
+      "pressure": 1011.14,
+      "sea_level": 1011.14,
+      "gnd_level": 0.0,
+      "humidity": 44
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 66
+    },
+    "wind": {
+      "speed": 3.43,
+      "deg": 189.166
+    }
+  },
+  {
+    "dt": 1564110000,
+    "dt_txt": "2019-07-26 03:00:00",
+    "main": {
+      "temp": 307.803,
+      "temp_min": 307.803,
+      "temp_max": 307.803,
+      "pressure": 1010.38,
+      "sea_level": 1010.38,
+      "gnd_level": 0.0,
+      "humidity": 34
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 8.64,
+      "deg": 171.744
+    }
+  },
+  {
+    "dt": 1564120800,
+    "dt_txt": "2019-07-26 06:00:00",
+    "main": {
+      "temp": 306.8,
+      "temp_min": 306.8,
+      "temp_max": 306.8,
+      "pressure": 1009.66,
+      "sea_level": 1009.66,
+      "gnd_level": 0.0,
+      "humidity": 40
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 804,
+        "main": "Clouds",
+        "description": "overcast clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 100
+    },
+    "wind": {
+      "speed": 8.99,
+      "deg": 170.384
+    }
+  },
+  {
+    "dt": 1564131600,
+    "dt_txt": "2019-07-26 09:00:00",
+    "main": {
+      "temp": 304.1,
+      "temp_min": 304.1,
+      "temp_max": 304.1,
+      "pressure": 1010.38,
+      "sea_level": 1010.38,
+      "gnd_level": 0.0,
+      "humidity": 49
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 71
+    },
+    "wind": {
+      "speed": 8.22,
+      "deg": 169.225
+    }
+  },
+  {
+    "dt": 1564142400,
+    "dt_txt": "2019-07-26 12:00:00",
+    "main": {
+      "temp": 302.395,
+      "temp_min": 302.395,
+      "temp_max": 302.395,
+      "pressure": 1011.72,
+      "sea_level": 1011.72,
+      "gnd_level": 0.0,
+      "humidity": 59
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03n.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03n"
+      }
+    ],
+    "clouds": {
+      "all": 43
+    },
+    "wind": {
+      "speed": 6.36,
+      "deg": 169.993
+    }
+  },
+  {
+    "dt": 1564153200,
+    "dt_txt": "2019-07-26 15:00:00",
+    "main": {
+      "temp": 301.4,
+      "temp_min": 301.4,
+      "temp_max": 301.4,
+      "pressure": 1010.94,
+      "sea_level": 1010.94,
+      "gnd_level": 0.0,
+      "humidity": 67
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/01n.png",
+        "id": 800,
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "01n"
+      }
+    ],
+    "clouds": {
+      "all": 1
+    },
+    "wind": {
+      "speed": 5.0,
+      "deg": 170.157
+    }
+  },
+  {
+    "dt": 1564164000,
+    "dt_txt": "2019-07-26 18:00:00",
+    "main": {
+      "temp": 301.0,
+      "temp_min": 301.0,
+      "temp_max": 301.0,
+      "pressure": 1010.33,
+      "sea_level": 1010.33,
+      "gnd_level": 0.0,
+      "humidity": 70
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 22
+    },
+    "wind": {
+      "speed": 3.7,
+      "deg": 167.037
+    }
+  },
+  {
+    "dt": 1564174800,
+    "dt_txt": "2019-07-26 21:00:00",
+    "main": {
+      "temp": 301.089,
+      "temp_min": 301.089,
+      "temp_max": 301.089,
+      "pressure": 1010.42,
+      "sea_level": 1010.42,
+      "gnd_level": 0.0,
+      "humidity": 70
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/04d.png",
+        "id": 803,
+        "main": "Clouds",
+        "description": "broken clouds",
+        "icon": "04d"
+      }
+    ],
+    "clouds": {
+      "all": 77
+    },
+    "wind": {
+      "speed": 3.62,
+      "deg": 174.338
+    }
+  },
+  {
+    "dt": 1564185600,
+    "dt_txt": "2019-07-27 00:00:00",
+    "main": {
+      "temp": 304.542,
+      "temp_min": 304.542,
+      "temp_max": 304.542,
+      "pressure": 1009.91,
+      "sea_level": 1009.91,
+      "gnd_level": 0.0,
+      "humidity": 54
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10d.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10d"
+      }
+    ],
+    "clouds": {
+      "all": 67
+    },
+    "wind": {
+      "speed": 3.6,
+      "deg": 157.808
+    }
+  },
+  {
+    "dt": 1564196400,
+    "dt_txt": "2019-07-27 03:00:00",
+    "main": {
+      "temp": 306.215,
+      "temp_min": 306.215,
+      "temp_max": 306.215,
+      "pressure": 1008.03,
+      "sea_level": 1008.03,
+      "gnd_level": 0.0,
+      "humidity": 49
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10d.png",
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10d"
+      }
+    ],
+    "clouds": {
+      "all": 74
+    },
+    "wind": {
+      "speed": 4.29,
+      "deg": 155.085
+    }
+  },
+  {
+    "dt": 1564207200,
+    "dt_txt": "2019-07-27 06:00:00",
+    "main": {
+      "temp": 306.551,
+      "temp_min": 306.551,
+      "temp_max": 306.551,
+      "pressure": 1006.88,
+      "sea_level": 1006.88,
+      "gnd_level": 0.0,
+      "humidity": 49
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10d.png",
+        "id": 501,
+        "main": "Rain",
+        "description": "moderate rain",
+        "icon": "10d"
+      }
+    ],
+    "clouds": {
+      "all": 80
+    },
+    "wind": {
+      "speed": 5.39,
+      "deg": 170.073
+    }
+  },
+  {
+    "dt": 1564218000,
+    "dt_txt": "2019-07-27 09:00:00",
+    "main": {
+      "temp": 304.7,
+      "temp_min": 304.7,
+      "temp_max": 304.7,
+      "pressure": 1007.22,
+      "sea_level": 1007.22,
+      "gnd_level": 0.0,
+      "humidity": 56
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03d.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03d"
+      }
+    ],
+    "clouds": {
+      "all": 39
+    },
+    "wind": {
+      "speed": 5.63,
+      "deg": 156.503
+    }
+  },
+  {
+    "dt": 1564228800,
+    "dt_txt": "2019-07-27 12:00:00",
+    "main": {
+      "temp": 302.6,
+      "temp_min": 302.6,
+      "temp_max": 302.6,
+      "pressure": 1008.4,
+      "sea_level": 1008.4,
+      "gnd_level": 0.0,
+      "humidity": 64
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/03n.png",
+        "id": 802,
+        "main": "Clouds",
+        "description": "scattered clouds",
+        "icon": "03n"
+      }
+    ],
+    "clouds": {
+      "all": 36
+    },
+    "wind": {
+      "speed": 3.4,
+      "deg": 127.261
+    }
+  },
+  {
+    "dt": 1564239600,
+    "dt_txt": "2019-07-27 15:00:00",
+    "main": {
+      "temp": 299.715,
+      "temp_min": 299.715,
+      "temp_max": 299.715,
+      "pressure": 1007.85,
+      "sea_level": 1007.85,
+      "gnd_level": 0.0,
+      "humidity": 84
+    },
+    "weather": [
+      {
+        "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+        "id": 501,
+        "main": "Rain",
+        "description": "moderate rain",
+        "icon": "10n"
+      }
+    ],
+    "clouds": {
+      "all": 68
+    },
+    "wind": {
+      "speed": 3.26,
+      "deg": 44.031
+    }
+  }
+]

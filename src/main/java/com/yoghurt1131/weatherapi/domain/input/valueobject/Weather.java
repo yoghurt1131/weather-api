@@ -25,6 +25,9 @@ public class Weather implements Serializable {
     @JsonProperty("icon")
     private String icon;
 
+    @JsonProperty("weatherIconUrl")
+    private String weatherIconUrl;
+
     /**
      * Open Weather Mapが提供するアイコンのURL
      * @return icon url
