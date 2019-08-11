@@ -45,7 +45,6 @@ public class WeatherApiServiceImpl implements WeatherApiService {
     }
 
     public CurrentWeather getCurrentWeather(String cityName) throws ApiCallException {
-
         try {
             City city = redisTemplate.opsForValue().get(cityName);
             if (city != null) {
@@ -56,31 +55,27 @@ public class WeatherApiServiceImpl implements WeatherApiService {
         } catch (RedisConnectionFailureException exception) {
             logger.warn("Failed to Connect Redis." + exception.getMessage());
         }
-
+        City response;
         try {
             String currentWeathrUrl = openWeatherApiUrl  + CURRENT_WEATHER;
             logger.info("Start calling API:" + currentWeathrUrl);
             String requestUrl = buildRequestUrlWithCityName(currentWeathrUrl, cityName);
             ResponseEntity<City> entity = restTemplate.getForEntity(requestUrl, City.class);
-            City response = entity.getBody();
+            response = entity.getBody();
             logger.info("Finish calling API:" + currentWeathrUrl);
-            HttpStatus reponseStatus = entity.getStatusCode();
-            logger.info("Response Status Code: " + reponseStatus);
-            logger.info("Response Body:" + entity.getBody());
-            try {
-            redisTemplate.opsForValue().set(cityName, response);
-            redisTemplate.expire(cityName, 30, TimeUnit.MINUTES);
-            } catch (RedisConnectionFailureException exception) {
-                logger.warn("Failed to Connect Redis." + exception.getMessage());
-            }
-
-            CurrentWeather currentWeather = CurrentWeather.getInstanceFromCity(response);
-            return currentWeather;
+            logger.info(String.format("Response Status Code: %s, Response Body:", entity.getStatusCode(), entity.getBody()));
         } catch (RestClientException exception) {
             logger.error("Error has occurred when calling weather api.");
             logger.info("Error Message:" + exception.getMessage());
             throw new ApiCallException(exception.getMessage(), exception.getCause());
         }
+        try {
+            redisTemplate.opsForValue().set(cityName, response);
+            redisTemplate.expire(cityName, 30, TimeUnit.MINUTES);
+        } catch (RedisConnectionFailureException exception) {
+            logger.warn("Failed to Connect Redis." + exception.getMessage());
+        }
+        return  CurrentWeather.getInstanceFromCity(response);
     }
 
     @Override
