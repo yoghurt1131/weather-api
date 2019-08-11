@@ -25,7 +25,19 @@ import java.net.URISyntaxException;
 public class RedistConfigHeroku {
 
     @Bean
-    public JedisConnectionFactory jedisConnectionFactory() throws URISyntaxException {
+    JedisPoolConfig jedisPoolConfig() {
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxTotal(10);
+        poolConfig.setMaxIdle(5);
+        poolConfig.setMinIdle(1);
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(true);
+        poolConfig.setTestWhileIdle(true);
+        return poolConfig;
+    }
+
+    @Bean
+    public JedisConnectionFactory jedisConnectionFactory(JedisPoolConfig jedisPoolConfig) throws URISyntaxException {
         String envRedisUrl = System.getenv("REDIS_URL");
         URI redisUri = new URI(envRedisUrl);
 
@@ -34,9 +46,11 @@ public class RedistConfigHeroku {
         hostConfig.setHostName(redisUri.getHost());
         hostConfig.setPassword(redisUri.getUserInfo().split(":", 2)[1]);
 
+
         JedisClientConfiguration.JedisClientConfigurationBuilder builder = JedisClientConfiguration.builder();
         JedisClientConfiguration clientConfig = builder
                 .usePooling()
+                .poolConfig(jedisPoolConfig)
                 .build();
 
         JedisConnectionFactory factory = new JedisConnectionFactory(hostConfig, clientConfig);
