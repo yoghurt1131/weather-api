@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 
 @Profile("heroku")
 @Configuration
-public class RedistConfigHeroku {
+public class RedisConfigHeroku {
 
     @Bean
     JedisPoolConfig jedisPoolConfig() {
