@@ -13,15 +13,16 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Profile("local")
 @EnableCaching
 @Configuration
-public class RedisConfig {
+class RedisConfig {
+
     @Bean
-    public RedisTemplate<String, City> redisTemplate(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, City> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(connectionFactory);
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
-        redisTemplate.setHashKeySerializer(redisTemplate.getKeySerializer());
-        redisTemplate.setHashValueSerializer(redisTemplate.getValueSerializer());
-        return redisTemplate;
+    fun redisTemplate(connectionFactory: RedisConnectionFactory): RedisTemplate<String, City> {
+        var redisTemplate = RedisTemplate<String, City>()
+        redisTemplate.connectionFactory = connectionFactory
+        redisTemplate.keySerializer = StringRedisSerializer()
+        redisTemplate.valueSerializer = JdkSerializationRedisSerializer()
+        redisTemplate.hashKeySerializer = redisTemplate.keySerializer
+        redisTemplate.hashValueSerializer = redisTemplate.valueSerializer
+        return redisTemplate
     }
 }
