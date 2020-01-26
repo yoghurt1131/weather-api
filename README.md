@@ -4,5 +4,5 @@
 # weather-api
 
 It provides weather information from [OpenWeatherMap](https://openweathermap.org/api).
-(So you should register OpenWeatherApi as a developer.)
+(So you would register OpenWeatherApi as a developer.)
 
