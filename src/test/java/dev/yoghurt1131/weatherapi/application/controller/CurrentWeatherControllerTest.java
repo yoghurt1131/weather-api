@@ -3,6 +3,7 @@ package dev.yoghurt1131.weatherapi.application.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.yoghurt1131.weatherapi.application.exception.ApiCallException;
 import dev.yoghurt1131.weatherapi.application.service.WeatherApiServiceImpl;
+import dev.yoghurt1131.weatherapi.controller.CurrentWeatherController;
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,17 +62,18 @@ public class CurrentWeatherControllerTest {
         verify(weatherApiService, times(1)).getCurrentWeather("Tokyo");
     }
 
-    @Test
-    public void testCityWhenApiExceptionHasThrowed() throws Exception {
+    @Test(expected = ApiCallException.class)
+    public void testCityWhenApiExceptionHasThrowed() throws Throwable {
         // setup
         Mockito.doThrow(new ApiCallException("Dummy Exception.", new IOException("Dummy IOException"))).when(weatherApiService).getCurrentWeather("Tokyo");
 
-        // when
-        MvcResult result= mockMvc.perform(get("/current/city")
-                .param("cityName", "Tokyo")
-        ).andExpect(status().isOk()).andReturn();
-
-        assertThat(result.getResponse().getContentAsString(), is(""));
-
+        try {
+            // when
+            MvcResult result = mockMvc.perform(get("/current/city")
+                    .param("cityName", "Tokyo")
+            ).andExpect(status().isOk()).andReturn();
+        } catch(Exception exception) {
+            throw exception.getCause();
+        }
     }
 }
