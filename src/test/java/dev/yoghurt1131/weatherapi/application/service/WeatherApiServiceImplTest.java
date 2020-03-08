@@ -5,6 +5,7 @@ import dev.yoghurt1131.weatherapi.domain.City;
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather;
 import dev.yoghurt1131.weatherapi.domain.Temperature;
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.Weather;
+import dev.yoghurt1131.weatherapi.service.WeatherInterpreter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Answers;

@@ -21,4 +21,44 @@ public class Forecast {
 
     // 最低気温
     private double minTemperature;
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getWeatherIconUrl() {
+        return weatherIconUrl;
+    }
+
+    public void setWeatherIconUrl(String weatherIconUrl) {
+        this.weatherIconUrl = weatherIconUrl;
+    }
+
+    public double getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public void setMaxTemperature(double maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public double getMinTemperature() {
+        return minTemperature;
+    }
+
+    public void setMinTemperature(double minTemperature) {
+        this.minTemperature = minTemperature;
+    }
 }

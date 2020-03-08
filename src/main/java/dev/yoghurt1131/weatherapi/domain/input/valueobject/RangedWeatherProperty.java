@@ -27,4 +27,59 @@ public class RangedWeatherProperty {
     @JsonProperty("humidity")
     private int humidity;
 
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public double getTempratureMin() {
+        return tempratureMin;
+    }
+
+    public void setTempratureMin(double tempratureMin) {
+        this.tempratureMin = tempratureMin;
+    }
+
+    public double getTempratureMax() {
+        return tempratureMax;
+    }
+
+    public void setTempratureMax(double tempratureMax) {
+        this.tempratureMax = tempratureMax;
+    }
+
+    public double getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(double pressure) {
+        this.pressure = pressure;
+    }
+
+    public double getPressureOfSeaLevel() {
+        return pressureOfSeaLevel;
+    }
+
+    public void setPressureOfSeaLevel(double pressureOfSeaLevel) {
+        this.pressureOfSeaLevel = pressureOfSeaLevel;
+    }
+
+    public double getPressureOfGroundLevel() {
+        return pressureOfGroundLevel;
+    }
+
+    public void setPressureOfGroundLevel(double pressureOfGroundLevel) {
+        this.pressureOfGroundLevel = pressureOfGroundLevel;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
 }

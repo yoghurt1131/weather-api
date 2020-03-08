@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.RangedWeather;
 import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast;
+import dev.yoghurt1131.weatherapi.service.TodayForecastInterpreter;
 import org.junit.Before;
 import org.junit.Test;
 
