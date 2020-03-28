@@ -17,7 +17,7 @@ data class City (
 
         fun extractWeather() = if(weathers.isNotEmpty()) weathers.first().status else "";
 
-        fun extractKelvin() = if(weathers.isNotEmpty()) temperature.temp else 0.0;
+        fun extractKelvin() = temperature.temp;
 
         @JsonIgnore
         fun getCurrentWeather(): CurrentWeather {
