@@ -19,7 +19,7 @@ class TodayForecastInterpreter : WeatherInterpreter {
                             .mapValues { it.value.count() }
                             .maxBy { it.value }?.key ?: "unknown"
         val weatherIconUrl = todaysWeather.flatMap { it.weathers }
-                .find { it.status == status }!!.icon
+                .find { it.status == status }!!.getWeatherIconUrl()
 
         val maxTemperature = todaysWeather.map { it.property }
                 .map{ it.temperatureMax }.max() ?: 0.0
