@@ -36,7 +36,7 @@ class WeatherApiServiceImpl(
     private val FORECAST_PATH = "/forecast"
 
     override fun getCurrentWeather(cityName: String): CurrentWeather {
-        // redis読み込み
+        // read redis value
         val city = redisTemplate.read(cityName)
         if (city != null) {
             return city.buildWeather();
@@ -57,7 +57,7 @@ class WeatherApiServiceImpl(
             throw ApiCallException(exception.message, exception.cause)
         }
 
-        // redis書き込み
+        // write redis value
         redisTemplate.write(cityName, response, 30, TimeUnit.MINUTES)
         return response.buildWeather();
     }
