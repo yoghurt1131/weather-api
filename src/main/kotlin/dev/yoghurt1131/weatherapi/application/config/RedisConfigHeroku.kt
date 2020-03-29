@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.config
+package dev.yoghurt1131.weatherapi.application.config
 
 import dev.yoghurt1131.weatherapi.domain.City
 import org.springframework.context.annotation.Bean
