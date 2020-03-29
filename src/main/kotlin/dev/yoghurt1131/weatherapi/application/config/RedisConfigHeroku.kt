@@ -1,9 +1,11 @@
 package dev.yoghurt1131.weatherapi.application.config
 
 import dev.yoghurt1131.weatherapi.domain.City
+import dev.yoghurt1131.weatherapi.infrastructure.RedisTemplateBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
+import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.connection.RedisPassword
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration
@@ -43,17 +45,6 @@ class RedisConfigHeroku {
                 .poolConfig(jedisPoolConfig)
                 .build();
         return JedisConnectionFactory(hostConfig, clientConfig)
-    }
-
-    @Bean
-    fun redisTemplat(jedisConnectionFactory: JedisConnectionFactory): RedisTemplate<String, City> {
-        var redisTemplate = RedisTemplate<String, City>()
-        redisTemplate.connectionFactory = jedisConnectionFactory
-        redisTemplate.keySerializer = StringRedisSerializer()
-        redisTemplate.valueSerializer = JdkSerializationRedisSerializer()
-        redisTemplate.hashKeySerializer = redisTemplate.keySerializer
-        redisTemplate.hashValueSerializer = redisTemplate.hashValueSerializer
-        return redisTemplate
     }
 
     private fun getPassword(uri: URI) = uri.userInfo.split(":")[1]

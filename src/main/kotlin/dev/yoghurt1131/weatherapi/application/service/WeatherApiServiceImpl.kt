@@ -5,6 +5,7 @@ import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast
 import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
+import dev.yoghurt1131.weatherapi.infrastructure.RedisTemplateBuilder
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.redis.RedisConnectionFailureException
@@ -19,11 +20,12 @@ import java.util.concurrent.TimeUnit
 @Service
 class WeatherApiServiceImpl(
         private val restTemplate: RestTemplate,
-        private val redisTemplate: RedisTemplate<String, City>,
+        private val redisTemplateBuilder: RedisTemplateBuilder,
         private val weatherInterpreter: WeatherInterpreter
 ) : WeatherApiService{
 
     private val logger = LoggerFactory.getLogger(this.javaClass)
+    private val redisTemplate = redisTemplateBuilder.build(City::class.java)
 
     @Value("\${openweatherapi.url}")
     protected var openWeatherApiUrl: String? = null
@@ -34,16 +36,12 @@ class WeatherApiServiceImpl(
     private val FORECAST_PATH = "/forecast"
 
     override fun getCurrentWeather(cityName: String): CurrentWeather {
-        try {
-            val city = redisTemplate.opsForValue().get(cityName);
-            if (city != null) {
-                logger.info("Cach Hit.($cityName)");
-                return city.buildWeather();
-            }
-            logger.info("Not in cache.($cityName)");
-        } catch (exception: RedisConnectionFailureException) {
-            logger.warn("Failed to conect Redis. ${exception.message}")
+        // redis読み込み
+        val city = redisTemplate.read(cityName)
+        if (city != null) {
+            return city.buildWeather();
         }
+
         var response: City?
         try {
             val currentWeatherUrl = "${openWeatherApiUrl}${CURRENT_WEATHER}";
@@ -58,12 +56,9 @@ class WeatherApiServiceImpl(
             logger.info("Error Message:" + exception.message)
             throw ApiCallException(exception.message, exception.cause)
         }
-        try {
-            redisTemplate.opsForValue().set(cityName, response);
-            redisTemplate.expire(cityName, 30, TimeUnit.SECONDS);
-        } catch (exception: RedisConnectionFailureException) {
-            logger.warn("Failed to conect Redis. ${exception.message}")
-        }
+
+        // redis書き込み
+        redisTemplate.write(cityName, response, 30, TimeUnit.MINUTES)
         return response.buildWeather();
     }
 
