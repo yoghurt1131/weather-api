@@ -2,14 +2,14 @@ package dev.yoghurt1131.weatherapi.infrastructure
 
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.domain.Temperature
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.spyk
+import io.mockk.*
 import org.mockito.MockitoAnnotations
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import org.springframework.data.redis.RedisConnectionFailureException
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.core.ValueOperations
+import java.util.concurrent.TimeUnit
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
@@ -25,7 +25,7 @@ object CustomRedisTemplateTest: Spek( {
     // data setup
     val cityName by memoized { "Tokyo" }
 
-    val city by memoized { City("Tokyo", emptyList(), mockk<Temperature>())}
+    val city by memoized { City("Tokyo", emptyList(),  mockk<Temperature>())}
 
     describe(".read()") {
         beforeEachTest {
@@ -58,6 +58,29 @@ object CustomRedisTemplateTest: Spek( {
 
             assertNull(actual)
         }
+    }
+
+    describe(".write()") {
+        beforeEachTest {
+            MockitoAnnotations.initMocks(this)
+        }
+
+        it("stores key and value.") {
+            every { valueOperations.set(cityName, city) } just Runs
+            every { target.expire(cityName, 1000, TimeUnit.MILLISECONDS) } returns true
+            every { target.opsForValue() } returns valueOperations
+
+            target.write(cityName, city, 1000, TimeUnit.MILLISECONDS)
+        }
+
+        it("do nothing when exception occurred.") {
+            every { valueOperations.set(cityName, city) } throws RedisConnectionFailureException("DUMMY")
+            every { target.expire(cityName, 1000, TimeUnit.MILLISECONDS) } returns true
+            every { target.opsForValue() } returns valueOperations
+
+            target.write(cityName, city, 1000, TimeUnit.MILLISECONDS)
+        }
+
     }
 
 })
