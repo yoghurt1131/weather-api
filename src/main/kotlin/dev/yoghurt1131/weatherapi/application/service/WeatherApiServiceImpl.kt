@@ -59,11 +59,11 @@ class WeatherApiServiceImpl(
 
         // write redis value
         redisTemplate.write(cityName, response, 30, TimeUnit.MINUTES)
-        return response.buildWeather();
+        return response.buildWeather()
     }
 
     override fun getTodayWeather(cityName: String): Forecast {
-        var apiResponse: FiveDaysForecast?;
+        var apiResponse: FiveDaysForecast?
         // TODO use redis cache
         try {
             val forecastUrl = "${openWeatherApiUrl}${FORECAST_PATH}";
@@ -77,11 +77,11 @@ class WeatherApiServiceImpl(
             logger.info("Response Status Code: $reponseStatus")
             logger.info("Response Body:" + entity.body!!)
         } catch (exception: RestClientException) {
-            logger.error("Error has occurred when calling weather api.");
-            logger.info("Error Message:" + exception.message);
-            throw ApiCallException(exception.message, exception.cause);
+            logger.error("Error has occurred when calling weather api.")
+            logger.info("Error Message:" + exception.message)
+            throw ApiCallException(exception.message, exception.cause)
         }
-        return weatherInterpreter.interpret(cityName, apiResponse.forecasts);
+        return weatherInterpreter.interpret(cityName, apiResponse.forecasts)
     }
 
     private fun buildRequestUrlWithCityName(url: String, cityName: String): String {
