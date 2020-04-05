@@ -28,9 +28,9 @@ class WeatherApiServiceImpl(
     private val redisTemplate = redisTemplateBuilder.build(City::class.java)
 
     @Value("\${openweatherapi.url}")
-    protected var openWeatherApiUrl: String? = null
+    internal var openWeatherApiUrl: String? = null
     @Value("\${openweatherapi.key}")
-    protected var apiKey: String? = null
+    internal var apiKey: String? = null
 
     private val CURRENT_WEATHER = "/weather"
     private val FORECAST_PATH = "/forecast"
