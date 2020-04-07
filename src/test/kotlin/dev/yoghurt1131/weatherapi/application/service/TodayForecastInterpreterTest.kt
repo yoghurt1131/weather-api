@@ -1,11 +1,8 @@
-package dev.yoghurt1131.weatherapi.service
+package dev.yoghurt1131.weatherapi.application.service
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import dev.yoghurt1131.weatherapi.application.service.TodayForecastInterpreter
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.RangedWeather
-import dev.yoghurt1131.weatherapi.domain.input.valueobject.RangedWeatherProperty
-import dev.yoghurt1131.weatherapi.domain.input.valueobject.Weather
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import java.io.File
