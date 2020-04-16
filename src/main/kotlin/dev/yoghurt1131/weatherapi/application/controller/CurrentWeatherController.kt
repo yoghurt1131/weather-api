@@ -14,5 +14,5 @@ class CurrentWeatherController(private val weatherApiService: WeatherApiService)
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
     @GetMapping("/city")
-    fun city(cityName: String) : CurrentWeather = weatherApiService.getCurrentWeather(cityName);
+    fun city(cityName: String): CurrentWeather = weatherApiService.getCurrentWeather(cityName)
 }

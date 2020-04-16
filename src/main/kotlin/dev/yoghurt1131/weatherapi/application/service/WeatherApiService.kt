@@ -5,7 +5,7 @@ import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
 
 interface WeatherApiService {
 
-    fun getCurrentWeather(cityName: String): CurrentWeather;
+    fun getCurrentWeather(cityName: String): CurrentWeather
 
-    fun getTodayWeather(citiName: String): Forecast;
+    fun getTodayWeather(citiName: String): Forecast
 }

@@ -6,23 +6,21 @@ import dev.yoghurt1131.weatherapi.domain.CurrentWeather
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast
 import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
 import dev.yoghurt1131.weatherapi.infrastructure.RedisTemplateBuilder
+import java.util.concurrent.TimeUnit
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.data.redis.RedisConnectionFailureException
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
-import java.util.concurrent.TimeUnit
 
 @Service
 class WeatherApiServiceImpl(
-        private val restTemplate: RestTemplate,
-        private val redisTemplateBuilder: RedisTemplateBuilder,
-        private val weatherInterpreter: WeatherInterpreter
-) : WeatherApiService{
+    private val restTemplate: RestTemplate,
+    private val redisTemplateBuilder: RedisTemplateBuilder,
+    private val weatherInterpreter: WeatherInterpreter
+) : WeatherApiService {
 
     private val logger = LoggerFactory.getLogger(this.javaClass)
     private val redisTemplate = redisTemplateBuilder.build(City::class.java)
@@ -39,18 +37,18 @@ class WeatherApiServiceImpl(
         // read redis value
         val city = redisTemplate.read(cityName)
         if (city != null) {
-            return city.buildWeather();
+            return city.buildWeather()
         }
 
         var response: City?
         try {
-            val currentWeatherUrl = "${openWeatherApiUrl}${CURRENT_WEATHER}";
-            logger.info("Start calling API:$currentWeatherUrl");
-            val requestUrl = buildRequestUrlWithCityName(currentWeatherUrl, cityName);
+            val currentWeatherUrl = "${openWeatherApiUrl}$CURRENT_WEATHER"
+            logger.info("Start calling API:$currentWeatherUrl")
+            val requestUrl = buildRequestUrlWithCityName(currentWeatherUrl, cityName)
             val responseEntity: ResponseEntity<City> = restTemplate.getForEntity(requestUrl, City::class.java)
-            response = responseEntity.body;
+            response = responseEntity.body
             logger.info("Finish calling API:$currentWeatherUrl")
-            logger.info(String.format("Response Status Code: %s, Response Body:", responseEntity.statusCode, response));
+            logger.info(String.format("Response Status Code: %s, Response Body:", responseEntity.statusCode, response))
         } catch (exception: RestClientException) {
             logger.error("Error has occurred when calling weather api.")
             logger.info("Error Message:" + exception.message)
@@ -66,7 +64,7 @@ class WeatherApiServiceImpl(
         var apiResponse: FiveDaysForecast?
         // TODO use redis cache
         try {
-            val forecastUrl = "${openWeatherApiUrl}${FORECAST_PATH}";
+            val forecastUrl = "${openWeatherApiUrl}$FORECAST_PATH"
             logger.info("Start calling API:$forecastUrl")
             val requestUrl = buildRequestUrlWithCityName(forecastUrl, cityName)
             logger.info("Request URL:$requestUrl")

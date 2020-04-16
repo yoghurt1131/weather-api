@@ -2,9 +2,9 @@ package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.RangedWeather
 import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
-import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import org.springframework.stereotype.Component
 
 @Component
 class TodayForecastInterpreter : WeatherInterpreter {
@@ -22,9 +22,9 @@ class TodayForecastInterpreter : WeatherInterpreter {
                 .find { it.status == status }!!.getWeatherIconUrl()
 
         val maxTemperature = todaysWeather.map { it.property }
-                .map{ it.temperatureMax }.max() ?: 0.0
+                .map { it.temperatureMax }.max() ?: 0.0
         val minTemperature = todaysWeather.map { it.property }
-                .map{ it.temperatureMin }.min() ?: 0.0
+                .map { it.temperatureMin }.min() ?: 0.0
         return Forecast(cityName, status, weatherIconUrl, maxTemperature, minTemperature)
     }
 

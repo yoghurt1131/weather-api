@@ -1,22 +1,22 @@
 package dev.yoghurt1131.weatherapi.infrastructure
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import java.util.concurrent.TimeUnit
 import org.springframework.data.redis.RedisConnectionFailureException
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
-import java.util.concurrent.TimeUnit
 
-class CustomRedisTemplate<V>: RedisTemplate<String, V> {
+class CustomRedisTemplate<V> : RedisTemplate<String, V> {
 
-    constructor(connectionFactory: RedisConnectionFactory, type: Class<V> ) {
+    constructor(connectionFactory: RedisConnectionFactory, type: Class<V>) {
         super.setConnectionFactory(connectionFactory)
         keySerializer = StringRedisSerializer()
         val jackson2JsonRedisSerializer = Jackson2JsonRedisSerializer(type)
         val om = jacksonObjectMapper()
         jackson2JsonRedisSerializer.setObjectMapper(om)
-        valueSerializer  = jackson2JsonRedisSerializer
+        valueSerializer = jackson2JsonRedisSerializer
         hashKeySerializer = keySerializer
         hashValueSerializer = valueSerializer
         afterPropertiesSet()
@@ -31,7 +31,7 @@ class CustomRedisTemplate<V>: RedisTemplate<String, V> {
             }
             logger.info("Not in Cache.(key=$key)")
             return null
-        } catch(exception: Exception) {
+        } catch (exception: Exception) {
             logger.warn("Failed to get data from Redis. ${exception.message}")
             return null
         }
@@ -45,6 +45,5 @@ class CustomRedisTemplate<V>: RedisTemplate<String, V> {
         } catch (exception: RedisConnectionFailureException) {
             logger.warn("Failed to conect Redis. ${exception.message}")
         }
-
     }
 }
