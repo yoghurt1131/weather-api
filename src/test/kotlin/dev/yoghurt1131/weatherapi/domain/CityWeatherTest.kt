@@ -7,7 +7,7 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
 
-object CityTest : Spek( {
+object CityWeatherTest : Spek( {
 
     lateinit var cityWeather: CityWeather;
     val weathers = listOf(
