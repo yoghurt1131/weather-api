@@ -1,14 +1,14 @@
-package dev.yoghurt1131.weatherapi.domain
+package dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
-import dev.yoghurt1131.weatherapi.domain.input.valueobject.Weather
+import dev.yoghurt1131.weatherapi.domain.CurrentWeather
 
 data class CityWeather(
-    val name: String,
-    @JsonProperty("weather")
+        val name: String,
+        @JsonProperty("weather")
     val weathers: List<Weather>,
-    @JsonProperty("main")
+        @JsonProperty("main")
     val temperature: Temperature
 ) {
 
@@ -24,6 +24,6 @@ data class CityWeather(
         }
 
         fun buildWeather() = CurrentWeather(
-                        name, extractWeather(), extractKelvin(), weathers.get(0).getWeatherIconUrl()
-                )
+                name, extractWeather(), extractKelvin(), weathers.get(0).getWeatherIconUrl()
+        )
 }

@@ -1,6 +1,6 @@
 package dev.yoghurt1131.weatherapi.application.config
 
-import dev.yoghurt1131.weatherapi.infrastructure.RedisTemplateBuilder
+import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
 import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

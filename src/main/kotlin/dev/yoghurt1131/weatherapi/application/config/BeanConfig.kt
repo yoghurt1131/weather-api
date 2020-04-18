@@ -1,7 +1,9 @@
 package dev.yoghurt1131.weatherapi.application.config
 
 import dev.yoghurt1131.weatherapi.application.properties.OpenWeatherApiProperties
-import dev.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.CurrentWeatherWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.FiveDayForecastWrapper
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
@@ -15,6 +17,10 @@ class BeanConfig {
     fun restTemplate(builder: RestTemplateBuilder) = builder.build()
 
     @Bean
+    fun currentWeatherWrapper(apiProerties: OpenWeatherApiProperties, restTemplate: RestTemplate) =
+            CurrentWeatherWrapper("${apiProerties.url}/weather", apiProerties.key, restTemplate, CityWeather::class.java)
+
+    @Bean
     fun fiveDayForecastWrapper(apiProerties: OpenWeatherApiProperties, restTemplate: RestTemplate) =
-            FiveDayForecastWrapper(apiProerties.url, apiProerties.key, restTemplate, FiveDaysForecast::class.java)
+            FiveDayForecastWrapper("${apiProerties.url}/forecast", apiProerties.key, restTemplate, FiveDaysForecast::class.java)
 }

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/forecast")
 class ForecastController(private val weatherApiService: WeatherApiService) {
 
-    @GetMapping("/daily")
+    @GetMapping("/today")
     fun dailyForecast(cityName: String) = weatherApiService.getTodayWeather(cityName)
 }

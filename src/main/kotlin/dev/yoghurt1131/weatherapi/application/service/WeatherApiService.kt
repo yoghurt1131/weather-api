@@ -1,7 +1,7 @@
 package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
-import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
+import dev.yoghurt1131.weatherapi.domain.Forecast
 
 interface WeatherApiService {
 

@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.infrastructure
+package dev.yoghurt1131.weatherapi.infrastructure.redis
 
 import org.springframework.data.redis.connection.RedisConnectionFactory
 

@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.domain.input.valueobject
+package dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

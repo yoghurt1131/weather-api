@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.domain.output.valueobject
+package dev.yoghurt1131.weatherapi.domain
 
 data class Forecast(
     var cityName: String,

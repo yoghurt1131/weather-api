@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.infrastructure
+package dev.yoghurt1131.weatherapi.infrastructure.redis
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.util.concurrent.TimeUnit
