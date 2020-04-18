@@ -1,6 +1,6 @@
 package dev.yoghurt1131.weatherapi.infrastructure
 
-import dev.yoghurt1131.weatherapi.domain.City
+import dev.yoghurt1131.weatherapi.domain.CityWeather
 import dev.yoghurt1131.weatherapi.domain.Temperature
 import io.mockk.*
 import org.mockito.MockitoAnnotations
@@ -18,14 +18,14 @@ object CustomRedisTemplateTest: Spek( {
 
     // object setup
     val connectionFactory by memoized {  mockk<RedisConnectionFactory>() }
-    val valueOperations by memoized { mockk<ValueOperations<String, City>>() }
-    val type by memoized { City::class.java }
+    val valueOperations by memoized { mockk<ValueOperations<String, CityWeather>>() }
+    val type by memoized { CityWeather::class.java }
     val target by memoized { spyk(CustomRedisTemplate(connectionFactory, type)) }
 
     // data setup
     val cityName by memoized { "Tokyo" }
 
-    val city by memoized { City("Tokyo", emptyList(),  mockk<Temperature>())}
+    val city by memoized { CityWeather("Tokyo", emptyList(),  mockk<Temperature>())}
 
     describe(".read()") {
         beforeEachTest {

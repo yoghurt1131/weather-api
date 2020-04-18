@@ -7,7 +7,7 @@ import kotlin.test.assertEquals
 
 object CityTest : Spek( {
 
-    lateinit var city: City;
+    lateinit var cityWeather: CityWeather;
     val weathers = listOf(
             Weather(800, "Clear", "clear sky", "01n", "weather://icon.png")
     )
@@ -16,14 +16,14 @@ object CityTest : Spek( {
     describe("extractWeather()") {
         context("weathers is not empty") {
             it ("returns first weather status") {
-                city = City("Tokyo", weathers, temperature)
-                assertEquals("Clear", city.extractWeather())
+                cityWeather = CityWeather("Tokyo", weathers, temperature)
+                assertEquals("Clear", cityWeather.extractWeather())
             }
         }
         context("weathers is empty") {
             it ("returns empty string") {
-                city = City("Tokyo", emptyList(), temperature)
-                assertEquals("", city.extractWeather())
+                cityWeather = CityWeather("Tokyo", emptyList(), temperature)
+                assertEquals("", cityWeather.extractWeather())
             }
         }
     }

@@ -1,7 +1,7 @@
 package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.application.exception.ApiCallException
-import dev.yoghurt1131.weatherapi.domain.City
+import dev.yoghurt1131.weatherapi.domain.CityWeather
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.FiveDaysForecast
 import dev.yoghurt1131.weatherapi.domain.output.valueobject.Forecast
@@ -23,7 +23,7 @@ class WeatherApiServiceImpl(
 ) : WeatherApiService {
 
     private val logger = LoggerFactory.getLogger(this.javaClass)
-    private val redisTemplate = redisTemplateBuilder.build(City::class.java)
+    private val redisTemplate = redisTemplateBuilder.build(CityWeather::class.java)
 
     @Value("\${openweatherapi.url}")
     internal var openWeatherApiUrl: String? = null
@@ -40,12 +40,12 @@ class WeatherApiServiceImpl(
             return city.buildWeather()
         }
 
-        var response: City?
+        var response: CityWeather?
         try {
-            val currentWeatherUrl = "${openWeatherApiUrl}$CURRENT_WEATHER"
+            val currentWeatherUrl = "$openWeatherApiUrl$CURRENT_WEATHER"
             logger.info("Start calling API:$currentWeatherUrl")
             val requestUrl = buildRequestUrlWithCityName(currentWeatherUrl, cityName)
-            val responseEntity: ResponseEntity<City> = restTemplate.getForEntity(requestUrl, City::class.java)
+            val responseEntity: ResponseEntity<CityWeather> = restTemplate.getForEntity(requestUrl, CityWeather::class.java)
             response = responseEntity.body
             logger.info("Finish calling API:$currentWeatherUrl")
             logger.info(String.format("Response Status Code: %s, Response Body:", responseEntity.statusCode, response))
@@ -64,7 +64,7 @@ class WeatherApiServiceImpl(
         var apiResponse: FiveDaysForecast?
         // TODO use redis cache
         try {
-            val forecastUrl = "${openWeatherApiUrl}$FORECAST_PATH"
+            val forecastUrl = "$openWeatherApiUrl$FORECAST_PATH"
             logger.info("Start calling API:$forecastUrl")
             val requestUrl = buildRequestUrlWithCityName(forecastUrl, cityName)
             logger.info("Request URL:$requestUrl")

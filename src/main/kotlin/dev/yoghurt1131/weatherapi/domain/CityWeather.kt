@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import dev.yoghurt1131.weatherapi.domain.input.valueobject.Weather
 
-data class City(
+data class CityWeather(
     val name: String,
     @JsonProperty("weather")
     val weathers: List<Weather>,
