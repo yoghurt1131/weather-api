@@ -1,7 +1,8 @@
 package dev.yoghurt1131.weatherapi.infrastructure
 
-import dev.yoghurt1131.weatherapi.domain.CityWeather
-import dev.yoghurt1131.weatherapi.domain.Temperature
+import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.Temperature
+import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
 import io.mockk.*
 import org.mockito.MockitoAnnotations
 import org.spekframework.spek2.Spek
@@ -25,7 +26,7 @@ object CustomRedisTemplateTest: Spek( {
     // data setup
     val cityName by memoized { "Tokyo" }
 
-    val city by memoized { CityWeather("Tokyo", emptyList(),  mockk<Temperature>())}
+    val city by memoized { CityWeather("Tokyo", emptyList(), mockk<Temperature>()) }
 
     describe(".read()") {
         beforeEachTest {
