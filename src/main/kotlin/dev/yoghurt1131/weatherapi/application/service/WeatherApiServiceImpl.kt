@@ -1,12 +1,12 @@
 package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.domain.City
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecast
 import dev.yoghurt1131.weatherapi.domain.Forecast
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.CurrentWeatherWrapper
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.FiveDayForecastWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
 import java.util.concurrent.TimeUnit
 import org.springframework.stereotype.Service

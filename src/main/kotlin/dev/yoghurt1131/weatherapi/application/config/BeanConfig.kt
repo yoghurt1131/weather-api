@@ -1,10 +1,10 @@
 package dev.yoghurt1131.weatherapi.application.config
 
 import dev.yoghurt1131.weatherapi.application.properties.OpenWeatherApiProperties
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.FiveDaysForecast
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.CurrentWeatherWrapper
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.FiveDayForecastWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.infrastructure.openweatherapi
+package dev.yoghurt1131.weatherapi.infrastructure.weather
 
 import dev.yoghurt1131.weatherapi.application.exception.ApiCallException
 import dev.yoghurt1131.weatherapi.domain.City

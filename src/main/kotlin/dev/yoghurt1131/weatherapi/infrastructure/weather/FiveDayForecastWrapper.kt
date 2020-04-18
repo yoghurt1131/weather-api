@@ -1,6 +1,6 @@
-package dev.yoghurt1131.weatherapi.infrastructure.openweatherapi
+package dev.yoghurt1131.weatherapi.infrastructure.weather
 
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecast
 import org.springframework.web.client.RestTemplate
 
 class FiveDayForecastWrapper(
