@@ -2,7 +2,7 @@ package dev.yoghurt1131.weatherapi.application.service
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import dev.yoghurt1131.weatherapi.infrastructure.openweatherapi.response.RangedWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.RangedWeather
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import java.io.File
