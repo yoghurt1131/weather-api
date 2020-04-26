@@ -36,10 +36,10 @@ class WeatherApiServiceImpl(
         return response.buildWeather()
     }
 
-    override fun getTodayWeather(cityName: String): Forecast {
+    override fun getTodayWeather(city: City): Forecast {
         var apiResponse: FiveDaysForecastResponse?
         // TODO use redis cache
         val response = fiveDayForecastWrapper.execute(City.Tokyo)
-        return weatherInterpreter.interpret(cityName, response.forecasts)
+        return weatherInterpreter.interpret(city, response.forecasts)
     }
 }

@@ -1,5 +1,6 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.domain.Forecast
 import dev.yoghurt1131.weatherapi.extentions.toWeatherStatus
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.RangedWeatherData
@@ -10,7 +11,7 @@ import java.time.format.DateTimeFormatter
 @Component
 class TodayForecastInterpreter : WeatherInterpreter {
 
-    override fun interpret(cityName: String, weatherData: List<RangedWeatherData>): Forecast {
+    override fun interpret(city: City, weatherData: List<RangedWeatherData>): Forecast {
         val endOfTody = LocalDateTime.now().withHour(23).withMinute(59).withSecond(59)
         val todaysWeather: List<RangedWeatherData> = weatherData.filter { toDateTime(it.utcDatetime).isBefore(endOfTody) }
 
@@ -26,7 +27,7 @@ class TodayForecastInterpreter : WeatherInterpreter {
                 .map { it.temperatureMax }.max() ?: 0.0
         val minTemperature = todaysWeather.map { it.property }
                 .map { it.temperatureMin }.min() ?: 0.0
-        return Forecast(cityName, status.toWeatherStatus(), weatherIconUrl, maxTemperature, minTemperature)
+        return Forecast(city, status.toWeatherStatus(), weatherIconUrl, maxTemperature, minTemperature)
     }
 
     private fun toDateTime(datetimeTxt: String): LocalDateTime {
