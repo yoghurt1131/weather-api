@@ -2,6 +2,7 @@ package dev.yoghurt1131.weatherapi.application.service
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreterImpl
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.domain.WeatherStatus
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.RangedWeatherData
@@ -21,7 +22,7 @@ object TodayForecastInterpreterTest: Spek({
             val weathers: List<RangedWeatherData> = jacksonObjectMapper().readValue(json)
 
             // execute method
-            val actual = TodayForecastInterpreter().interpret(city, weathers)
+            val actual = WeatherInterpreterImpl().toTodaysForecast(city, weathers)
 
             // assert
             assertEquals(City.Tokyo, actual.city)

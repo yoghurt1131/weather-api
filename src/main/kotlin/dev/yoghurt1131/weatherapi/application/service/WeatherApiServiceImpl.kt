@@ -1,5 +1,6 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
@@ -40,6 +41,6 @@ class WeatherApiServiceImpl(
         var apiResponse: FiveDaysForecastResponse?
         // TODO use redis cache
         val response = fiveDayForecastWrapper.execute(City.Tokyo)
-        return weatherInterpreter.interpret(city, response.forecasts)
+        return weatherInterpreter.toTodaysForecast(city, response.forecasts)
     }
 }

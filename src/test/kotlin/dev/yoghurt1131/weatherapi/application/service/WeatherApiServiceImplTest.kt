@@ -1,5 +1,6 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.TemperatureData
