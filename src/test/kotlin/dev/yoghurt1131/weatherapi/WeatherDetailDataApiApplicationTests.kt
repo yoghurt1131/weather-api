@@ -12,7 +12,7 @@ import org.hamcrest.core.Is.`is` as assertIs
 @RunWith(SpringRunner::class)
 @ActiveProfiles("local")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-class WeatherApiApplicationTests {
+class WeatherDetailDataApiApplicationTests {
 
 	@Test
 	fun testApplicationBoot() {

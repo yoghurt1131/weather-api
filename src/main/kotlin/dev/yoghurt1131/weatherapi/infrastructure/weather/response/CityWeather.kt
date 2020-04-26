@@ -7,23 +7,23 @@ import dev.yoghurt1131.weatherapi.domain.CurrentWeather
 data class CityWeather(
         val name: String,
         @JsonProperty("weather")
-    val weathers: List<Weather>,
+    val weatherDetailData: List<WeatherDetailData>,
         @JsonProperty("main")
-    val temperature: Temperature
+    val temperature: TemperatureData
 ) {
 
-        fun extractWeather() = if (weathers.isNotEmpty()) weathers.first().status else ""
+        fun extractWeather() = if (weatherDetailData.isNotEmpty()) weatherDetailData.first().status else ""
 
         fun extractKelvin() = temperature.temp
 
         @JsonIgnore
         fun getCurrentWeather(): CurrentWeather {
                 var currentWeather: CurrentWeather =
-                        CurrentWeather(name, extractWeather(), extractKelvin(), weathers.first().getWeatherIconUrl())
+                        CurrentWeather(name, extractWeather(), extractKelvin(), weatherDetailData.first().getWeatherIconUrl())
                 return currentWeather
         }
 
         fun buildWeather() = CurrentWeather(
-                name, extractWeather(), extractKelvin(), weathers.get(0).getWeatherIconUrl()
+                name, extractWeather(), extractKelvin(), weatherDetailData.get(0).getWeatherIconUrl()
         )
 }

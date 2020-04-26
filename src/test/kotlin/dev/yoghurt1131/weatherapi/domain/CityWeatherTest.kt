@@ -1,8 +1,8 @@
 package dev.yoghurt1131.weatherapi.domain
 
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.Weather
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.WeatherDetailData
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.Temperature
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.TemperatureData
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals
@@ -11,9 +11,9 @@ object CityWeatherTest : Spek( {
 
     lateinit var cityWeather: CityWeather;
     val weathers = listOf(
-            Weather(800, "Clear", "clear sky", "01n", "weather://icon.png")
+            WeatherDetailData(800, "Clear", "clear sky", "01n", "weather://icon.png")
     )
-    val temperature = Temperature(281.52, 1000, 60, 283.71, 280.04)
+    val temperature = TemperatureData(281.52, 1000, 60, 283.71, 280.04)
 
     describe("extractWeather()") {
         context("weathers is not empty") {

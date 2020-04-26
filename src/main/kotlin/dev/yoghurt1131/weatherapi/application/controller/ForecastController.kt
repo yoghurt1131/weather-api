@@ -4,11 +4,20 @@ import dev.yoghurt1131.weatherapi.application.service.WeatherApiService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/forecast")
 class ForecastController(private val weatherApiService: WeatherApiService) {
 
     @GetMapping("/today")
-    fun dailyForecast(cityName: String) = weatherApiService.getTodayWeather(cityName)
+    fun todayForecast(cityName: String) = weatherApiService.getTodayWeather(cityName)
+
+    /**
+     * 日毎の天気予報を返す
+     */
+    @GetMapping("/daily")
+    fun daily(cityName: String, date: LocalDate) {
+
+    }
 }

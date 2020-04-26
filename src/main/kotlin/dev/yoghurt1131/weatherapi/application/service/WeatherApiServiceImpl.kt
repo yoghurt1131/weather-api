@@ -3,7 +3,7 @@ package dev.yoghurt1131.weatherapi.application.service
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
 import dev.yoghurt1131.weatherapi.domain.CurrentWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecast
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecastResponse
 import dev.yoghurt1131.weatherapi.domain.Forecast
 import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
@@ -37,7 +37,7 @@ class WeatherApiServiceImpl(
     }
 
     override fun getTodayWeather(cityName: String): Forecast {
-        var apiResponse: FiveDaysForecast?
+        var apiResponse: FiveDaysForecastResponse?
         // TODO use redis cache
         val response = fiveDayForecastWrapper.execute(City.Tokyo)
         return weatherInterpreter.interpret(cityName, response.forecasts)

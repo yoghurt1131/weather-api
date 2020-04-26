@@ -2,8 +2,8 @@ package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.domain.City
 import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.Temperature
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.Weather
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.TemperatureData
+import dev.yoghurt1131.weatherapi.infrastructure.weather.response.WeatherDetailData
 import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
@@ -32,8 +32,8 @@ object WeatherApiServiceImplTest: Spek({
 
 
     // sample data
-    val temperature by memoized { Temperature(299.7, 1010, 84, 300.1, 290.5) }
-    val weather by memoized { Weather(501, "Rain", "moderate rain", "10n", "https://xxxx") }
+    val temperature by memoized { TemperatureData(299.7, 1010, 84, 300.1, 290.5) }
+    val weather by memoized { WeatherDetailData(501, "Rain", "moderate rain", "10n", "https://xxxx") }
     val city by memoized { CityWeather("Tokyo", listOf(weather), temperature) }
     val cityName by memoized { "Tokyo" }
 
