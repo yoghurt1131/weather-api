@@ -12,7 +12,7 @@ script:
     - ./mvnw clean jacoco:prepare-agent test jacoco:report
 
 after_script:
-    - cp target/site/jacoco/jacoco.xml src/main/java/jacoco.xml
-    - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage  target/site/jacoco/jacoco.xml --input-type jacoco
+    - cp target/site/jacoco/jacoco.xml src/main/kotlin/jacoco.xml
+    - JACOCO_SOURCE_PATH=src/main/kotlin ./cc-test-reporter format-coverage  target/site/jacoco/jacoco.xml --input-type jacoco
     - ./cc-test-reporter upload-coverage
 
