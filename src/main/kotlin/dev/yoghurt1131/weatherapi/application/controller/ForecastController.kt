@@ -19,7 +19,7 @@ class ForecastController(private val weatherApiService: WeatherApiService) {
     }
 
     /**
-     * 日毎の天気予報を返す
+     * returns daily forecast of this week
      */
     @GetMapping("/daily")
     fun daily(cityName: String, date: LocalDate) {
