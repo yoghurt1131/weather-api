@@ -160,6 +160,12 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.3</version>
+				<configuration>
+					<excludes>
+						<!-- Exclude from test coverage because it's Bean Definitions-->
+						<exclude>**/application/config/**</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>kotlin-maven-plugin</artifactId>
