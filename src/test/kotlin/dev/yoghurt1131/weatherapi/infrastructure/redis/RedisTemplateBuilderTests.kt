@@ -18,5 +18,4 @@ object RedisTemplateBuilderTests : Spek({
             assertEquals(CustomRedisTemplate<CityWeather>::javaClass.name, actual::javaClass.name)
         }
     }
-
 })
