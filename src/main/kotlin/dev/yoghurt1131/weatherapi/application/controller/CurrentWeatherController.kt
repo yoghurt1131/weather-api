@@ -1,7 +1,7 @@
 package dev.yoghurt1131.weatherapi.application.controller
 
 import dev.yoghurt1131.weatherapi.application.service.WeatherApiService
-import dev.yoghurt1131.weatherapi.domain.CurrentWeather
+import dev.yoghurt1131.weatherapi.application.controller.response.CurrentWeather
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

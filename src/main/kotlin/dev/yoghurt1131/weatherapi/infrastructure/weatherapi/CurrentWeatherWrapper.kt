@@ -1,6 +1,6 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi
 
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
 import org.springframework.web.client.RestTemplate
 
 class CurrentWeatherWrapper(

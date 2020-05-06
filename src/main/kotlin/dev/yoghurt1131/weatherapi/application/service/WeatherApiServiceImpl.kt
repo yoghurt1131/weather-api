@@ -1,13 +1,14 @@
 package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
-import dev.yoghurt1131.weatherapi.domain.City
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
-import dev.yoghurt1131.weatherapi.domain.CurrentWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.FiveDaysForecastResponse
-import dev.yoghurt1131.weatherapi.domain.Forecast
-import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
-import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
+import dev.yoghurt1131.weatherapi.domain.entity.City
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.application.controller.response.CurrentWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.FiveDaysForecastResponse
+import dev.yoghurt1131.weatherapi.application.controller.response.Forecast
+import dev.yoghurt1131.weatherapi.application.controller.response.RainForecast
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.CurrentWeatherWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.FiveDayForecastWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
 import java.util.concurrent.TimeUnit
 import org.springframework.stereotype.Service
@@ -24,13 +25,13 @@ class WeatherApiServiceImpl(
 
     override fun getCurrentWeather(cityName: String): CurrentWeather {
         // read redis value
-        val city = redisTemplate.read(cityName)
-        if (city != null) {
-            return city.buildWeather()
+        val cityWeatherCache = redisTemplate.read(cityName)
+        if (cityWeatherCache != null) {
+            return cityWeatherCache.buildWeather()
         }
 
         // api call
-        val response = currentWeatherWrapper.execute(City.Tokyo)
+        val response = currentWeatherWrapper.execute(City.valueOf(cityName))
 
         // write redis value
         redisTemplate.write(cityName, response, 30, TimeUnit.MINUTES)
@@ -38,9 +39,13 @@ class WeatherApiServiceImpl(
     }
 
     override fun getTodayWeather(city: City): Forecast {
-        var apiResponse: FiveDaysForecastResponse?
         // TODO use redis cache
-        val response = fiveDayForecastWrapper.execute(City.Tokyo)
+        val response = fiveDayForecastWrapper.execute(city)
         return weatherInterpreter.toTodaysForecast(city, response.forecasts)
+    }
+
+    override fun getRainForecast(city: City): List<RainForecast> {
+        val response = fiveDayForecastWrapper.execute(city)
+        return weatherInterpreter.toDailyRainForecast(city, response.forecasts)
     }
 }

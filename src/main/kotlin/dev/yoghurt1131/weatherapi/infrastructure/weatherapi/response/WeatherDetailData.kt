@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather.response
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

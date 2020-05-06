@@ -1,6 +1,6 @@
 package dev.yoghurt1131.weatherapi.extentions
 
-import dev.yoghurt1131.weatherapi.domain.WeatherStatus
+import dev.yoghurt1131.weatherapi.domain.entity.WeatherStatus
 import org.junit.jupiter.api.Assertions.*
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe

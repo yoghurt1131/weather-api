@@ -3,9 +3,9 @@ package dev.yoghurt1131.weatherapi.application.service
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreterImpl
-import dev.yoghurt1131.weatherapi.domain.City
-import dev.yoghurt1131.weatherapi.domain.WeatherStatus
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.RangedWeatherData
+import dev.yoghurt1131.weatherapi.domain.entity.City
+import dev.yoghurt1131.weatherapi.domain.entity.WeatherStatus
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.RangedWeatherData
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import java.io.File

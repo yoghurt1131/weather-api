@@ -1,8 +1,8 @@
 package dev.yoghurt1131.weatherapi.domain
 
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.WeatherDetailData
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.TemperatureData
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.WeatherDetailData
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.TemperatureData
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import kotlin.test.assertEquals

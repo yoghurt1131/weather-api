@@ -1,12 +1,12 @@
 package dev.yoghurt1131.weatherapi.application.service
 
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
-import dev.yoghurt1131.weatherapi.domain.City
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.TemperatureData
-import dev.yoghurt1131.weatherapi.infrastructure.weather.response.WeatherDetailData
-import dev.yoghurt1131.weatherapi.infrastructure.weather.CurrentWeatherWrapper
-import dev.yoghurt1131.weatherapi.infrastructure.weather.FiveDayForecastWrapper
+import dev.yoghurt1131.weatherapi.domain.entity.City
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.TemperatureData
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.WeatherDetailData
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.CurrentWeatherWrapper
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.FiveDayForecastWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
 import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
 import io.mockk.Runs

@@ -1,7 +1,7 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi
 
 import dev.yoghurt1131.weatherapi.application.exception.ApiCallException
-import dev.yoghurt1131.weatherapi.domain.City
+import dev.yoghurt1131.weatherapi.domain.entity.City
 import dev.yoghurt1131.weatherapi.extentions.logger
 import dev.yoghurt1131.weatherapi.extentions.loggingResposne
 import org.springframework.web.client.RestClientException

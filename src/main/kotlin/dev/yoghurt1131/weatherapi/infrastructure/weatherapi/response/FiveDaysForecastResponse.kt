@@ -1,6 +1,10 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather.response
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import dev.yoghurt1131.weatherapi.application.controller.response.RainForecast
+import dev.yoghurt1131.weatherapi.domain.entity.City
+import dev.yoghurt1131.weatherapi.domain.entity.WeatherStatus
+import dev.yoghurt1131.weatherapi.extentions.toDateTime
 
 /**
  * ValueObject for response of OpenWeatherAPI
@@ -17,7 +21,11 @@ data class RangedWeatherData(
         @JsonProperty("weather") var weatherDetailData: List<WeatherDetailData>,
         @JsonProperty("clouds") var clouds: CloudnessData,
         @JsonProperty("wind") var wind: WindData
-)
+) {
+    fun toRainForecast(city: City): RainForecast {
+        return RainForecast(city, utcDatetime.toDateTime(), WeatherStatus.of(weatherDetailData.get(0).status))
+    }
+}
 
 
 data class RangedWeatherProperty(

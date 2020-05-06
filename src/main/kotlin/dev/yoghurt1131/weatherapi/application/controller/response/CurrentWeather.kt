@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.domain
+package dev.yoghurt1131.weatherapi.application.controller.response
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.math.BigDecimal

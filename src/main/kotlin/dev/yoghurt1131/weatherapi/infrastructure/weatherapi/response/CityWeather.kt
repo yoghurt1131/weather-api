@@ -1,8 +1,8 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather.response
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
-import dev.yoghurt1131.weatherapi.domain.CurrentWeather
+import dev.yoghurt1131.weatherapi.application.controller.response.CurrentWeather
 
 data class CityWeather(
         val name: String,

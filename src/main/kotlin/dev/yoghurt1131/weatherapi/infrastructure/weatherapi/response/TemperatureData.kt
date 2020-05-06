@@ -1,4 +1,4 @@
-package dev.yoghurt1131.weatherapi.infrastructure.weather.response
+package dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response
 
 data class TemperatureData(
         val temp: Double,
