@@ -23,7 +23,7 @@ data class RangedWeatherData(
         @JsonProperty("wind") var wind: WindData
 ) {
     fun toRainForecast(city: City): RainForecast {
-        return RainForecast(city, utcDatetime.toDateTime(), WeatherStatus.of(weatherDetailData.get(0).status))
+        return RainForecast(city, utcDatetime.toDateTime(), WeatherStatus.of(weatherDetailData[0].status))
     }
 }
 

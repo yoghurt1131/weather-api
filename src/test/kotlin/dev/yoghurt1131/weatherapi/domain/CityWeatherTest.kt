@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 
 object CityWeatherTest : Spek( {
 
-    lateinit var cityWeather: CityWeather;
+    lateinit var cityWeather: CityWeather
     val weathers = listOf(
             WeatherDetailData(800, "Clear", "clear sky", "01n", "weather://icon.png")
     )

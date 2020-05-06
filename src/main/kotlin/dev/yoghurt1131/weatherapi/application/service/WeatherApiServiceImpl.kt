@@ -39,7 +39,6 @@ class WeatherApiServiceImpl(
     }
 
     override fun getTodayWeather(city: City): Forecast {
-        // TODO use redis cache
         val response = fiveDayForecastWrapper.execute(city)
         return weatherInterpreter.toTodaysForecast(city, response.forecasts)
     }

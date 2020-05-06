@@ -1,0 +1,29 @@
+{
+  "dt": 1563818400,
+  "dt_txt": "2019-07-22 18:00:00",
+  "main": {
+    "temp": 296.17,
+    "temp_min": 296.17,
+    "temp_max": 297.744,
+    "pressure": 1008.4,
+    "sea_level": 1008.4,
+    "gnd_level": 0.0,
+    "humidity": 82
+  },
+  "weather": [
+    {
+      "weatherIconUrl": "http://openweathermap.org/img/w/10n.png",
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10n"
+    }
+  ],
+  "clouds": {
+    "all": 100
+  },
+  "wind": {
+    "speed": 1.66,
+    "deg": 350.424
+  }
+}

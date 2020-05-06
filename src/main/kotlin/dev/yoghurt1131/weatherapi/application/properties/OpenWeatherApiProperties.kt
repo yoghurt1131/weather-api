@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component
 @Component
 @ConfigurationProperties("openweatherapi")
 class OpenWeatherApiProperties {
-    lateinit var url: String;
-    lateinit var  key: String;
+    lateinit var url: String
+    lateinit var  key: String
 }

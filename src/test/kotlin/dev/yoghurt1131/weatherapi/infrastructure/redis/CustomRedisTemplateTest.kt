@@ -1,8 +1,7 @@
-package dev.yoghurt1131.weatherapi.infrastructure
+package dev.yoghurt1131.weatherapi.infrastructure.redis
 
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.TemperatureData
-import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
 import io.mockk.*
 import org.mockito.MockitoAnnotations
 import org.spekframework.spek2.Spek

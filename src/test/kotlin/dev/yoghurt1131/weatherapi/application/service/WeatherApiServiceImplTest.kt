@@ -1,14 +1,15 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.weatherapi.application.controller.response.Forecast
+import dev.yoghurt1131.weatherapi.application.controller.response.RainForecast
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
 import dev.yoghurt1131.weatherapi.domain.entity.City
-import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
-import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.TemperatureData
-import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.WeatherDetailData
+import dev.yoghurt1131.weatherapi.domain.entity.WeatherStatus
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.CurrentWeatherWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.FiveDayForecastWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
 import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
+import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.*
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -17,6 +18,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.mockito.MockitoAnnotations
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
+import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
 object WeatherApiServiceImplTest: Spek({
@@ -40,9 +42,7 @@ object WeatherApiServiceImplTest: Spek({
 
     describe("getCurrentWeather()") {
        beforeEachTest {
-           MockitoAnnotations.initMocks(this)
            every { redisTemplateBuilder.build(CityWeather::class.java) } returns redisTemplate
-
        }
 
         it ("returns city weather if cache exists.") {
@@ -68,6 +68,39 @@ object WeatherApiServiceImplTest: Spek({
 
             assertEquals(actual.cityName, expected.cityName)
         }
+    }
 
+    describe("getTodayWeather()") {
+        beforeEachTest {
+            every { redisTemplateBuilder.build(CityWeather::class.java) } returns redisTemplate
+        }
+        // setup data
+        val weatherData by memoized { listOf<RangedWeatherData>(mockk())}
+        val response by memoized { FiveDaysForecastResponse(weatherData) }
+        val forecast by memoized { Forecast(City.Tokyo, WeatherStatus.RAINY, "", 0.0, 0.0) }
+        it ("returns forecast object from weatherInterpreter's result") {
+            every { fiveDaysForecastWrapper.execute(City.Tokyo) } returns response
+            every { weatherInterpreter.toTodaysForecast(City.Tokyo, weatherData) } returns forecast
+
+            val actual = target.getTodayWeather(City.Tokyo)
+            assertEquals(forecast, actual)
+        }
+    }
+
+    describe("getRainForecast()") {
+        beforeEachTest {
+            every { redisTemplateBuilder.build(CityWeather::class.java) } returns redisTemplate
+        }
+        // setup data
+        val weatherData by memoized { listOf<RangedWeatherData>(mockk())}
+        val response by memoized { FiveDaysForecastResponse(weatherData) }
+        val rainForecasts by memoized { listOf(RainForecast(City.Tokyo, LocalDateTime.of(2020, 4, 1, 0,0), WeatherStatus.RAINY)) }
+        it ("returns forecast object from weatherInterpreter's result") {
+            every { fiveDaysForecastWrapper.execute(City.Tokyo) } returns response
+            every { weatherInterpreter.toDailyRainForecast(City.Tokyo, weatherData) } returns rainForecasts
+
+            val actual = target.getRainForecast(City.Tokyo)
+            assertEquals(rainForecasts, actual)
+        }
     }
 })
