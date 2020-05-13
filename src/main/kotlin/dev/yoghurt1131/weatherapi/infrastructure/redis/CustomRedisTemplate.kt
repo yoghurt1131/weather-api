@@ -24,7 +24,7 @@ class CustomRedisTemplate<V> : RedisTemplate<String, V> {
 
     fun read(key: String): V? {
         try {
-            val value: V = this.opsForValue().get(key)
+            val value: V? = this.opsForValue().get(key)
             if (value != null) {
                 logger.info("Cache Hit.(key=$key)")
                 return value
