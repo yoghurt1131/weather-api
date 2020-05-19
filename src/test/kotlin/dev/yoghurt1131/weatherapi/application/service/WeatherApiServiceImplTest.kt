@@ -1,5 +1,7 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.kledistemplate.core.accessor.KLedisTemplate
+import dev.yoghurt1131.kledistemplate.core.accessor.KLedisTemplateBuilder
 import dev.yoghurt1131.weatherapi.application.controller.response.Forecast
 import dev.yoghurt1131.weatherapi.application.controller.response.RainForecast
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
@@ -26,8 +28,8 @@ object WeatherApiServiceImplTest: Spek({
     // object setup
     val currentWeatherWrapper by memoized { mockk<CurrentWeatherWrapper>() }
     val fiveDaysForecastWrapper by memoized { mockk<FiveDayForecastWrapper>() }
-    val redisTemplate by memoized { mockk<CustomRedisTemplate<CityWeather>>() }
-    val redisTemplateBuilder by memoized { mockk<RedisTemplateBuilder>() }
+    val redisTemplate by memoized { mockk<KLedisTemplate<CityWeather>>() }
+    val redisTemplateBuilder by memoized { mockk<KLedisTemplateBuilder>() }
     val weatherInterpreter by memoized { mockk<WeatherInterpreter>() }
 
     val target by memoized { WeatherApiServiceImpl(

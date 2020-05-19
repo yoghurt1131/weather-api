@@ -1,5 +1,6 @@
 package dev.yoghurt1131.weatherapi.application.service
 
+import dev.yoghurt1131.kledistemplate.core.accessor.KLedisTemplateBuilder
 import dev.yoghurt1131.weatherapi.application.service.adapter.WeatherInterpreter
 import dev.yoghurt1131.weatherapi.domain.entity.City
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.CityWeather
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service
 class WeatherApiServiceImpl(
         private val currentWeatherWrapper: CurrentWeatherWrapper,
         private val fiveDayForecastWrapper: FiveDayForecastWrapper,
-        private val redisTemplateBuilder: RedisTemplateBuilder,
+        private val redisTemplateBuilder: KLedisTemplateBuilder,
         private val weatherInterpreter: WeatherInterpreter
 ) : WeatherApiService {
 

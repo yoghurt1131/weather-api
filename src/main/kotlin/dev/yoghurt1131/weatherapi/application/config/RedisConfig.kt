@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
 
-@EnableCaching
-@Configuration
+// @EnableCaching
+// @Configuration
 class RedisConfig {
 
-    @Bean
+    // @Bean
     fun redisTemplateBuilder(connectionFactory: RedisConnectionFactory): RedisTemplateBuilder {
         return RedisTemplateBuilder(connectionFactory)
     }
