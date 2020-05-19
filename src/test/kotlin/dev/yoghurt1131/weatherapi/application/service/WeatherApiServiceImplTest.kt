@@ -9,8 +9,6 @@ import dev.yoghurt1131.weatherapi.domain.entity.City
 import dev.yoghurt1131.weatherapi.domain.entity.WeatherStatus
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.CurrentWeatherWrapper
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.FiveDayForecastWrapper
-import dev.yoghurt1131.weatherapi.infrastructure.redis.CustomRedisTemplate
-import dev.yoghurt1131.weatherapi.infrastructure.redis.RedisTemplateBuilder
 import dev.yoghurt1131.weatherapi.infrastructure.weatherapi.response.*
 import io.mockk.Runs
 import io.mockk.every
