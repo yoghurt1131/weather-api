@@ -148,7 +148,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>dev.yoghurt1131.weatherapi.WeatherApiApplication</mainClass>
+					<mainClass>dev.yoghurt1131.weatherapi.WeatherApiApplicationKt</mainClass>
 				</configuration>
                 <executions>
                     <execution>
