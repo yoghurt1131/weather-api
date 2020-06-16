@@ -159,8 +159,9 @@
                 </executions>
 			</plugin>
 			<plugin>
-			<groupId>com.atlassian.maven.plugins</groupId>
-			<artifactId>clover-maven-plugin</artifactId>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>clover-maven-plugin</artifactId>
+				<version>4.1.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
